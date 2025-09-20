@@ -1,43 +1,47 @@
-import StatusPill from './StatusPill';
-
-const DataTable = ({ columns, data, onSort, sortConfig }) => {
-  const renderCell = (item, column) => {
-    if (column.key === 'status') {
-      return <StatusPill status={item[column.key]} />;
-    }
-    return item[column.key];
-  };
-
+const DataTable = ({ columns, data, title }) => {
   return (
-    <table className="w-full">
-      <thead className="bg-page-light dark:bg-page-dark">
-        <tr>
-          {columns.map((col) => (
-            <th 
-              key={col.key} 
-              className="p-6 text-left text-xs font-medium text-light-text-secondary dark:text-dark-text-secondary uppercase tracking-wider cursor-pointer"
-              onClick={() => onSort(col.key)}
-            >
-              {col.label}
-              {sortConfig && sortConfig.key === col.key && (
-                <span>{sortConfig.direction === 'ascending' ? ' ▲' : ' ▼'}</span>
-              )}
-            </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody className="divide-y divide-light-border dark:divide-dark-border">
-        {data.map((item) => (
-          <tr key={item.id} className="hover:bg-page-light dark:hover:bg-page-dark">
-            {columns.map((col) => (
-              <td key={`${item.id}-${col.key}`} className="p-6 whitespace-nowrap text-sm text-light-text-secondary dark:text-dark-text-secondary">
-                {renderCell(item, col)}
-              </td>
+    <div className="overflow-hidden">
+      {title && (
+        <div className="p-6 border-b border-light-border dark:border-dark-border">
+          <h3 className="font-semibold text-light-text-primary dark:text-dark-text-primary">
+            {title}
+          </h3>
+        </div>
+      )}
+      <div className="p-6 overflow-x-auto">
+        <table className="w-full">
+          <thead>
+            <tr>
+              {columns.map(column => (
+                <th 
+                  key={column.key} 
+                  className="text-left p-2 text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary"
+                >
+                  {column.label}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((row, index) => (
+              <tr 
+                key={index}
+                className="border-b border-light-border dark:border-dark-border last:border-0"
+              >
+                {columns.map(column => (
+                  <td 
+                    key={column.key} 
+                    className="p-2 text-sm text-light-text-primary dark:text-dark-text-primary"
+                  >
+                    {row[column.key]}
+                  </td>
+                ))}
+              </tr>
             ))}
-          </tr>
-        ))}
-      </tbody>
-    </table>
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 };
 

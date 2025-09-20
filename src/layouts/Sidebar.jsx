@@ -1,33 +1,88 @@
 import { NavLink } from 'react-router-dom';
-import { FiHome, FiGrid } from 'react-icons/fi';
+import { 
+  FiHome, 
+  FiGrid, 
+  FiLayout, 
+  FiShoppingCart, 
+  FiBriefcase, 
+  FiBookOpen, 
+  FiUser, 
+  FiFileText,
+  FiUsers,
+  FiSettings,
+  FiGlobe,
+  FiPenTool,
+  FiLink
+} from 'react-icons/fi';
+
+// Data structure for navigation links to keep the JSX clean and maintainable.
+const navSections = [
+  {
+    title: 'Favorites',
+    links: [
+      { name: 'Overview', path: '/', icon: FiHome },
+      { name: 'Projects', path: '/projects', icon: FiGrid }
+    ]
+  },
+  {
+    title: 'Dashboards',
+    links: [
+      { name: 'Default', path: '/dashboards/default', icon: FiLayout },
+      { name: 'eCommerce', path: '/ecommerce/orders', icon: FiShoppingCart },
+      { name: 'Projects', path: '/dashboards/projects', icon: FiBriefcase },
+      { name: 'Online Courses', path: '/dashboards/courses', icon: FiBookOpen }
+    ]
+  },
+  {
+    title: 'Pages',
+    links: [
+      { name: 'User Profile', path: '/pages/profile', icon: FiUser },
+      { name: 'Overview', path: '/pages/overview', icon: FiFileText },
+      { name: 'Projects', path: '/pages/projects', icon: FiBriefcase },
+      { name: 'Campaigns', path: '/pages/campaigns', icon: FiGlobe },
+      { name: 'Documents', path: '/pages/documents', icon: FiFileText },
+      { name: 'Followers', path: '/pages/followers', icon: FiUsers },
+      { name: 'Account', path: '/pages/account', icon: FiSettings },
+      { name: 'Corporate', path: '/pages/corporate', icon: FiPenTool },
+      { name: 'Blog', path: '/pages/blog', icon: FiLink },
+      { name: 'Social', path: '/pages/social', icon: FiUsers },
+    ]
+  }
+];
 
 const Sidebar = () => {
   const linkStyle = "flex items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary hover:bg-accent-blue-light dark:hover:bg-dark-accent-blue-light hover:text-accent-blue dark:hover:text-accent-blue transition-colors duration-200";
-  const activeLinkStyle = "bg-accent-blue-light dark:bg-dark-accent-blue-light text-accent-blue dark:text-accent-blue font-semibold";
+  const activeLinkStyle = "bg-accent-blue-light dark:bg-dark-accent-blue-light text-accent-blue font-semibold";
 
   return (
-    <aside className="w-64 flex-shrink-0 border-r border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface p-6 hidden lg:block">
+    <aside className="w-64 flex-shrink-0 border-r border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface p-6 hidden lg:flex flex-col">
       <h1 className="text-xl font-bold text-light-text-primary dark:text-dark-text-primary mb-8">ByeWind</h1>
-      <nav className="flex flex-col gap-y-4">
-        <div>
-          <h2 className="text-xs font-semibold text-light-text-secondary dark:text-dark-text-secondary uppercase tracking-wider mb-2">Favorites</h2>
-          <NavLink to="/" className={({ isActive }) => isActive ? `${linkStyle} ${activeLinkStyle}` : linkStyle}>
-            <FiHome />
-            Overview
-          </NavLink>
-          <NavLink to="/projects" className={({ isActive }) => isActive ? `${linkStyle} ${activeLinkStyle}` : linkStyle}>
-            <FiGrid />
-            Projects
-          </NavLink>
-        </div>
-        <div>
-          <h2 className="text-xs font-semibold text-light-text-secondary dark:text-dark-text-secondary uppercase tracking-wider mb-2">Dashboards</h2>
-          <NavLink to="/ecommerce/orders" className={({ isActive }) => isActive ? `${linkStyle} ${activeLinkStyle}` : linkStyle}>
-            eCommerce
-          </NavLink>
-        </div>
+      <nav className="flex-1 flex flex-col gap-y-6">
+        {navSections.map((section) => (
+          <div key={section.title}>
+            <h2 className="px-3 text-xs font-semibold text-light-text-secondary dark:text-dark-text-secondary uppercase tracking-wider mb-2">
+              {section.title}
+            </h2>
+            <div className="flex flex-col gap-y-1">
+              {section.links.map((link) => (
+                <NavLink
+                  key={link.name + section.title}
+                  to={link.path}
+                  className={({ isActive }) =>
+                    isActive ? `${linkStyle} ${activeLinkStyle}` : linkStyle
+                  }
+                  end={link.path === '/'} // Use 'end' prop for the root path to avoid matching all routes
+                >
+                  <link.icon className="h-5 w-5" />
+                  {link.name}
+                </NavLink>
+              ))}
+            </div>
+          </div>
+        ))}
       </nav>
     </aside>
   );
 };
+
 export default Sidebar;
