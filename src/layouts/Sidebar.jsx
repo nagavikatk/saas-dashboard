@@ -43,17 +43,14 @@ const navSections = [
       { name: 'Documents', path: '/pages/documents', icon: FiFileText },
       { name: 'Followers', path: '/pages/followers', icon: FiUsers },
       { name: 'Account', path: '/pages/account', icon: FiSettings },
-      { name: 'Corporate', path: '/pages/corporate', icon: FiPenTool },
-      { name: 'Blog', path: '/pages/blog', icon: FiLink },
-      { name: 'Social', path: '/pages/social', icon: FiUsers },
     ]
   }
 ];
 
-const Sidebar = () => {
-  const linkStyle = "flex items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary hover:bg-accent-blue-light dark:hover:bg-dark-accent-blue-light hover:text-accent-blue dark:hover:text-accent-blue transition-colors duration-200";
-  const activeLinkStyle = "bg-accent-blue-light dark:bg-dark-accent-blue-light text-accent-blue font-semibold";
+const linkStyle = "flex items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary hover:bg-accent-blue-light dark:hover:bg-dark-border";
+const activeLinkStyle = "bg-[#e1f3fe] text-[#3B82F6] font-semibold";
 
+const Sidebar = () => {
   return (
     <aside className="w-64 flex-shrink-0 border-r border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface p-6 hidden lg:flex flex-col">
       <h1 className="text-xl font-bold text-light-text-primary dark:text-dark-text-primary mb-8">ByeWind</h1>

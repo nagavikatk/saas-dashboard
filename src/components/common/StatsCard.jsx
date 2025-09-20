@@ -1,21 +1,19 @@
-import { motion } from 'framer-motion';
+import Card from './Card';
+import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
 
 const StatsCard = ({ title, value, prefix = '', suffix = '', change }) => {
-  const isPositive = parseFloat(change) >= 0;
+  const isPositive = change.startsWith('+');
 
   return (
-    <motion.div 
-      className="p-6 bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border rounded-xl"
-      whileHover={{ y: -5, transition: { duration: 0.2 } }}
-    >
+    <Card className="p-6">
       <h3 className="text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary">{title}</h3>
       <p className="mt-2 text-2xl font-semibold text-light-text-primary dark:text-dark-text-primary">
         {prefix}{value}{suffix}
       </p>
       <p className={`mt-2 text-sm ${isPositive ? 'text-status-green' : 'text-status-red'}`}>
-        {isPositive ? '↑' : '↓'} {Math.abs(change)}%
+        {isPositive ? <FiArrowUp className="inline-block" /> : <FiArrowDown className="inline-block" />} {change.substring(1)}
       </p>
-    </motion.div>
+    </Card>
   );
 };
 

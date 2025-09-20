@@ -23,31 +23,40 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="space-y-6">
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {statsData.map((stat, index) => (
-          <StatsCard key={index} {...stat} />
-        ))}
-      </div>
-
-      {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2">
-          <Card>
-            <RevenueChart />
-          </Card>
+    <div className="flex flex-col gap-6">
+      {/* First Row */}
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="w-full lg:w-1/2">
+          <div className="grid grid-cols-2 gap-6">
+            {statsData.map((stat, index) => (
+              <StatsCard key={index} {...stat} />
+            ))}
+          </div>
         </div>
-        <div>
+        <div className="w-full lg:w-1/2">
           <Card>
             <ProjectionsChart />
           </Card>
         </div>
       </div>
 
-      {/* Data Tables Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        <div className="lg:col-span-3">
+      {/* Second Row */}
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="w-full lg:w-[70%]">
+          <Card>
+            <RevenueChart />
+          </Card>
+        </div>
+        <div className="w-full lg:w-[30%]">
+          <Card>
+            <WorldMapChart />
+          </Card>
+        </div>
+      </div>
+
+      {/* Third Row */}
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="w-full lg:w-[70%]">
           <Card>
             <DataTable 
               columns={columns}
@@ -56,17 +65,12 @@ const Dashboard = () => {
             />
           </Card>
         </div>
-        <div>
+        <div className="w-full lg:w-[30%]">
           <Card>
             <SalesDonutChart />
           </Card>
         </div>
       </div>
-
-      {/* Map Section */}
-      <Card>
-        <WorldMapChart />
-      </Card>
     </div>
   );
 };

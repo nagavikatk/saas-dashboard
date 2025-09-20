@@ -1,13 +1,13 @@
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const data = [
-  { day: 'Mon', current: 4000, previous: 3000 },
-  { day: 'Tue', current: 4500, previous: 3800 },
-  { day: 'Wed', current: 5000, previous: 4200 },
-  { day: 'Thu', current: 4800, previous: 4500 },
-  { day: 'Fri', current: 5200, previous: 4800 },
-  { day: 'Sat', current: 5500, previous: 5000 },
-  { day: 'Sun', current: 5700, previous: 5200 }
+  { day: 'Mon', revenue: 4000 },
+  { day: 'Tue', revenue: 4500 },
+  { day: 'Wed', revenue: 5000 },
+  { day: 'Thu', revenue: 4800 },
+  { day: 'Fri', revenue: 5200 },
+  { day: 'Sat', revenue: 5500 },
+  { day: 'Sun', revenue: 5700 }
 ];
 
 const RevenueChart = () => {
@@ -16,15 +16,21 @@ const RevenueChart = () => {
       <h3 className="text-lg font-semibold mb-4 text-light-text-primary dark:text-dark-text-primary">
         Weekly Revenue
       </h3>
-      <LineChart width={600} height={300} data={data}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="day" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="current" stroke="#3B82F6" strokeWidth={2} />
-        <Line type="monotone" dataKey="previous" stroke="#94A3B8" strokeWidth={2} />
-      </LineChart>
+      <ResponsiveContainer width="100%" height="85%">
+        <AreaChart data={data}>
+          <defs>
+            <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3}/>
+              <stop offset="95%" stopColor="#3B82F6" stopOpacity={0}/>
+            </linearGradient>
+          </defs>
+          <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
+          <XAxis dataKey="day" axisLine={false} tickLine={false} />
+          <YAxis axisLine={false} tickLine={false} />
+          <Tooltip />
+          <Area type="monotone" dataKey="revenue" stroke="#3B82F6" strokeWidth={2} fill="url(#colorRevenue)" />
+        </AreaChart>
+      </ResponsiveContainer>
     </div>
   );
 };

@@ -16,13 +16,13 @@ const ProjectionsChart = () => {
         Projections vs Actuals
       </h3>
       <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data}>
+        <BarChart data={data} barSize={20} barGap={-20}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="month" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="projections" fill="#EFF6FF" stroke="#3B82F6" strokeWidth={1} />
-          <Bar dataKey="actuals" fill="#F0FDF4" stroke="#10B981" strokeWidth={1} />
+          <Bar dataKey="projections" fill="#cedeea" />
+          <Bar dataKey="actuals" fill="#a8c4d9" />
         </BarChart>
       </ResponsiveContainer>
     </div>

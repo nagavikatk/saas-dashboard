@@ -7,6 +7,9 @@ export default {
       sans: ['Inter', 'sans-serif'],
     },
     extend: {
+      boxShadow: {
+        'card-shadow': '0px 10px 30px 0px rgba(17, 24, 39, 0.05)',
+      },
       colors: {
         'page-light': '#F8FAFC',
         'light-surface': '#FFFFFF',
