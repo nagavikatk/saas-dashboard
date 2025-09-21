@@ -43,13 +43,13 @@ const Dashboard = () => {
 
       {/* Second Row */}
       <div className="flex flex-col lg:flex-row gap-10">
-        <div className="w-full lg:w-[70%]">
+        <div className="w-full lg:w-[75%]">
           <Card className='bg-primary-light'>
             <RevenueChart />
           </Card>
         </div>
-        <div className="w-full lg:w-[30%] flex">
-          <Card className='bg-primary-light fle-grow'>
+        <div className="w-full lg:w-[25%] flex">
+          <Card className='bg-primary-light flex-grow'>
             <WorldMapChart />
           </Card>
         </div>
