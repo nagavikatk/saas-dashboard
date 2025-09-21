@@ -44,17 +44,17 @@ const Header = ({ toggleSidebar, isSidebarCollapsed }) => {
   }, [debouncedSearchQuery, handleSearch]);
 
   return (
-    <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 w-full">
+    <header className="bg-white dark:bg-dark-surface border-b border-light-border dark:border-dark-border w-full">
       <div className="flex items-center justify-between p-4 h-16">
         {/* Left Section: Breadcrumbs and Favorites */}
         <div className="flex items-center space-x-4">
           <button
             onClick={toggleSidebar}
-            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+            className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors"
           >
             <PanelLeft size={20} />
           </button>
-          <button className="text-gray-500 hover:text-yellow-500 dark:text-gray-400 dark:hover:text-yellow-400 transition-colors">
+          <button className="text-light-text-secondary hover:text-yellow-500 dark:text-dark-text-secondary dark:hover:text-yellow-400 transition-colors">
             <Star size={20} />
           </button>
           <Breadcrumbs />
@@ -83,18 +83,18 @@ const Header = ({ toggleSidebar, isSidebarCollapsed }) => {
           </div>
 
           {/* Action Icons */}
-          <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+          <button className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors">
             <Sun size={20} />
           </button>
-          <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+          <button className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors">
             <RefreshCw size={20} />
           </button>
-          <button className="relative text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+          <button className="relative text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors">
             <Bell size={20} />
             {/* Notification dot */}
             <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-900"></span>
           </button>
-          <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+          <button className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors">
             <PanelRight size={20} />
           </button>
         </div>

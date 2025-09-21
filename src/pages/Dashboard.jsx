@@ -61,7 +61,7 @@ const Dashboard = () => {
           <Card>
             <DataTable 
               columns={columns}
-              data={topSellingProducts}
+              data={topSellingProducts.splice(0, 5)}
               title="Top Selling Products"
             />
           </Card>
