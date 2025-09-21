@@ -15,13 +15,13 @@ export default {
       },
       colors: {
         ...defaultTheme.colors, // This line is crucial!
-        'page-light': '#F8FAFC',
+        'page-light': '#FFFFFF',
         'light-surface': '#FFFFFF',
         'light-text-primary': '#0F172A',
         'light-text-secondary': '#64748B',
         'light-border': '#E2E8F0',
-        'page-dark': '#0B1120',
-        'dark-surface': '#172134',
+        'page-dark': '#1C1C1C',
+        'dark-surface': '#1C1C1C',
         'dark-text-primary': '#F8FAFC',
         'dark-text-secondary': '#94A3B8',
         'dark-border': '#334155',
