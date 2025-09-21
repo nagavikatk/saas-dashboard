@@ -35,14 +35,14 @@ const Dashboard = () => {
       {/* The 3x2 grid of dashboard components will go here */}
       {/* First Row */}
       <div className="flex flex-col lg:flex-row gap-10 mb-10">
-        <div className="w-full lg:w-1/2 flex" > 
+        <div className="w-full lg:flex-1 flex" >
           <div className="grid grid-cols-2 gap-10 flex-grow">
             {statsData.map((stat, index) => (
               <StatsCard key={index} {...stat} />
             ))}
           </div>
         </div>
-        <div className="w-full lg:w-1/2">
+        <div className="w-full lg:flex-1">
           <Card className='bg-primary-light dark:bg-dark-primary-light'>
             <ProjectionsChart />
           </Card>
@@ -51,12 +51,12 @@ const Dashboard = () => {
 
       {/* Second Row */}
       <div className="flex flex-col lg:flex-row gap-10 mb-10">
-        <div className="w-full lg:w-[75%]">
+        <div className="w-full lg:flex-[3]">
           <Card className='bg-primary-light dark:bg-dark-primary-light'>
             <RevenueChart />
           </Card>
         </div>
-        <div className="w-full lg:w-[25%] flex">
+        <div className="w-full lg:flex-[1] flex">
           <Card className='bg-primary-light flex-grow dark:bg-dark-primary-light'>
             <WorldMapChart />
           </Card>
@@ -65,7 +65,7 @@ const Dashboard = () => {
 
       {/* Third Row */}
       <div className="flex flex-col lg:flex-row gap-10">
-        <div className="w-full lg:w-[75%]">
+        <div className="w-full lg:flex-[3]">
           <Card className='bg-primary-light dark:bg-dark-primary-light'>
             <DataTable 
               columns={columns}
@@ -74,7 +74,7 @@ const Dashboard = () => {
             />
           </Card>
         </div>
-        <div className="w-full lg:w-[25%] flex">
+        <div className="w-full lg:flex-[1] flex">
           <Card className='bg-primary-light flex-grow dark:bg-dark-primary-light'>
             <SalesDonutChart />
           </Card>

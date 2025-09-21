@@ -5,12 +5,12 @@ const StatsCard = ({ title, value, prefix = '', suffix = '', change, isPositive,
   return (
     <Card className={`${bgClass} p-6 flex flex-col justify-center h-full`}>
       <p className={`text-base font-medium ${textClass}`}>{title}</p>
-      <div className="flex items-end justify-between mt-2">
-        <p className={`text-3xl font-bold ${textClass}`}>
+      <div className="flex items-end justify-between mt-2 flex-wrap">
+        <p className={`text-lg lg:text-3xl font-bold min-w-0 ${textClass}`}>
           {prefix}{value}{suffix}
         </p>
-        <div className={`flex items-center gap-1 text-sm font-semibold ${isPositive ? 'text-status-green' : `${textClass}`}`}>
-          {isPositive ? <ArrowUpRight size={16} /> : <ArrowDownRight size={16} />}
+        <div className={`flex items-center gap-1 text-xs lg:text-sm font-semibold min-w-0 ${isPositive ? 'text-status-green' : `${textClass}`}`}>
+          {isPositive ? <ArrowUpRight size={12} /> : <ArrowDownRight size={12} />}
           <span>{change}</span>
         </div>
       </div>

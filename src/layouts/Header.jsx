@@ -102,11 +102,11 @@ const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
           <div className="relative"> {/* Wrap button and popover in a relative div */}
             <button
               onClick={toggleNotificationPopover} // Add onClick handler
-              className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors"
+              className="flex items-center justify-center text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors"
             >
               <Bell size={20} />
               {/* Notification dot */}
-              <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-900"></span>
+              <span className="absolute top-0.5 right-0.5 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-900"></span>
             </button>
             {isNotificationPopoverOpen && (
               <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-dark-surface border border-light-border dark:border-dark-border rounded-lg shadow-lg overflow-hidden z-20">
