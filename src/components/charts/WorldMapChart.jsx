@@ -10,14 +10,19 @@ const markers = [
 
 const WorldMapChart = () => {
   return (
-    <div className="p-6 h-[400px] flex flex-col">
+    <div className="h-[300px] flex flex-col">
       <h3 className="text-lg font-semibold mb-4 text-light-text-primary dark:text-dark-text-primary">
         Revenue by Location
       </h3>
       <div className="flex-grow">
         <VectorMap
           map={worldMill}
-                    backgroundColor="#E2E8F0"
+          backgroundColor="primary-light"
+          regionStyle={{
+            initial: {
+              fill: '#A8C5DA',
+            }
+          }}
           containerStyle={{
             width: '100%',
             height: '100%'
@@ -26,7 +31,7 @@ const WorldMapChart = () => {
             regions: [{
               attribute: 'fill',
               scale: {
-                default: '#808080'
+                default: '#A8C5DA'
               },
               values: {
                 // Dummy values to apply default fill to all regions
@@ -36,7 +41,7 @@ const WorldMapChart = () => {
           markers={markers}
           markerStyle={{
             initial: {
-              fill: '#3B82F6',
+              fill: 'primary-dark',
               r: 5
             }
           }}

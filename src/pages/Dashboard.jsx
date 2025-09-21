@@ -23,33 +23,33 @@ const Dashboard = () => {
   ];
 
   return (
-    <main className="flex-1 p-6 bg-light-surface dark:bg-dark-surface">
+    <main className="flex-1 p-6 bg-light-surface dark:bg-dark-surface gap-10">
       {/* The 3x2 grid of dashboard components will go here */}
       {/* First Row */}
-      <div className="flex flex-col lg:flex-row gap-6">
-        <div className="w-full lg:w-1/2">
-          <div className="grid grid-cols-2 gap-6">
+      <div className="flex flex-col lg:flex-row gap-10 mb-10">
+        <div className="w-full lg:w-1/2 flex" > 
+          <div className="grid grid-cols-2 gap-10 flex-grow">
             {statsData.map((stat, index) => (
               <StatsCard key={index} {...stat} />
             ))}
           </div>
         </div>
         <div className="w-full lg:w-1/2">
-          <Card>
+          <Card className='bg-primary-light'>
             <ProjectionsChart />
           </Card>
         </div>
       </div>
 
       {/* Second Row */}
-      <div className="flex flex-col lg:flex-row gap-6">
+      <div className="flex flex-col lg:flex-row gap-10">
         <div className="w-full lg:w-[70%]">
-          <Card>
+          <Card className='bg-primary-light'>
             <RevenueChart />
           </Card>
         </div>
         <div className="w-full lg:w-[30%]">
-          <Card>
+          <Card className='bg-primary-light'>
             <WorldMapChart />
           </Card>
         </div>

@@ -3,8 +3,8 @@ import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
 const StatsCard = ({ title, value, prefix = '', suffix = '', change, isPositive, bgClass }) => {
   return (
-    <Card className={`${bgClass}`}>
-      <p className="text-sm text-gray">{title}</p>
+    <Card className={`${bgClass} p-6 flex flex-col justify-center h-full`}>
+      <p className="text-base font-medium text-dark">{title}</p>
       <div className="flex items-end justify-between mt-2">
         <p className="text-3xl font-bold text-dark">
           {prefix}{value}{suffix}

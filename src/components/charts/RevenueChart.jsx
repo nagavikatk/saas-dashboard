@@ -2,15 +2,18 @@ import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
 const data = [
-    // Your chart data...
-    { name: 'Jan', 'Current Week': 4000, 'Previous Week': 2400 },
-    { name: 'Feb', 'Current Week': 3000, 'Previous Week': 1398 },
-    // ... more data
+    { name: 'Mon', 'Current Week': 500, 'Previous Week': 750 },
+    { name: 'Tue', 'Current Week': 750, 'Previous Week': 900 },
+    { name: 'Wed', 'Current Week': 900, 'Previous Week': 750 },
+    { name: 'Thu', 'Current Week': 750, 'Previous Week': 500 },
+    { name: 'Fri', 'Current Week': 500, 'Previous Week': 250 },
+    { name: 'Sat', 'Current Week': 250, 'Previous Week': 500 },
+    { name: 'Sun', 'Current Week': 500, 'Previous Week': 750 },
 ];
 
 const RevenueChart = () => {
     return (
-        <div className="bg-white p-6 rounded-xl border border-border shadow-sm">
+        <div className="bg-primary-light rounded-xl">
             <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold text-dark">Revenue</h3>
                 {/* Custom Legend because recharts legend is hard to style perfectly */}
@@ -31,8 +34,8 @@ const RevenueChart = () => {
                     <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#6C757D' }} />
                     <YAxis axisLine={false} tickLine={false} tick={{ fill: '#6C757D' }} />
                     <Tooltip contentStyle={{ backgroundColor: '#212529', border: 'none', borderRadius: '0.5rem' }} labelStyle={{ color: '#FFFFFF' }} />
-                    <Line type="monotone" dataKey="Current Week" stroke="#212529" strokeWidth={2} dot={{ r: 4, fill: '#212529' }} activeDot={{ r: 6 }} />
-                    <Line type="monotone" dataKey="Previous Week" stroke="#6C757D" strokeWidth={2} strokeDasharray="5 5" dot={{ r: 4, fill: '#6C757D' }} activeDot={{ r: 6 }} />
+                    <Line type={"monotone"} dataKey="Current Week" stroke="#A8C5DA" strokeWidth={2} />
+                    <Line type="monotone" dataKey="Previous Week" stroke="#1C1C1C" strokeWidth={2} />
                 </LineChart>
             </ResponsiveContainer>
         </div>

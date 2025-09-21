@@ -11,20 +11,22 @@ const data = [
 
 const ProjectionsChart = () => {
   return (
-    <div className="p-6 h-[300px]">
-      <h3 className="text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary mb-4">
+    <div className="flex flex-col items-start w-full">
+      <h3 className="text-lg font-medium text-dark dark:text-dark-text-secondary mb-4">
         Projections vs Actuals
       </h3>
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart data={data} barSize={20} barGap={-20}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="month" />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey="projections" fill="#cedeea" />
-          <Bar dataKey="actuals" fill="#a8c4d9" />
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="w-full h-[250px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart data={data} barSize={20} barGap={-20}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="month" />
+            <YAxis />
+            <Tooltip />
+            <Bar dataKey="projections" fill="#cedeea" />
+            <Bar dataKey="actuals" fill="#a8c4d9" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 };
