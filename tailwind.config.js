@@ -44,17 +44,18 @@ export default {
         'purple': '#8B5CF6',
         'cyan': '#06B6D4',
         'primary-blue':'#E3F5FF',
-        'dark-primary-blue':'#1A365D',
+        'dark-primary-blue':'#E3F5FF',
         'primary-light':'#F7F9FB',
-        'dark-primary-light':'#2D3748',
+        'dark-primary-light':'#FFFFFF0D',
         'primary-purple':'#E5ECF6',
-        'dark-primary-purple':'#4A2C6D',
+        'dark-primary-purple':'#E5ECF6',
         'secondary-cyan':'#A8C5DA',
         'secondary-cyan-light':'#e6f5ffff',
         'secondary-indigo':'#95A4FC',
         'secondary-blue':'#B1E3FF',
         'secondary-mint':'#BAEDBD',
-        'primary-brand':'#1C1C1C'
+        'primary-brand':'#1C1C1C',
+        'primary-brand-dark':'#C6C7F8'
       },
       fontSize: {
         'xxs': '0.6875rem',

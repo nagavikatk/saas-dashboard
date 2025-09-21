@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
-
-const data = [
-  { name: 'Direct', value: 300.56, color: '#95A4FC' },
-  { name: 'Affiliate', value: 135.18, color: '#B1E3FF' },
-  { name: 'Sponsored', value: 154.02, color: '#BAEDBD' },
-  { name: 'E-mail', value: 48.96, color: '#1C1C1C' },
-];
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 const SalesDonutChart = () => {
+  const { theme } = useContext(ThemeContext);
+
+  const data = [
+    { name: 'Direct', value: 300.56, color: '#95A4FC' },
+    { name: 'Affiliate', value: 135.18, color: '#B1E3FF' },
+    { name: 'Sponsored', value: 154.02, color: '#BAEDBD' },
+    { name: 'E-mail', value: 48.96, color: theme === 'dark' ? '#C6C7F8' : '#1C1C1C' },
+  ];
+
   return (
     <div className="rounded-xl">
       <h3 className="text-lg font-semibold text-light-text-primary dark:text-dark-text-primary mb-4">Total Sales</h3>

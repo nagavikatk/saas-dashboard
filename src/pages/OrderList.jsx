@@ -176,8 +176,8 @@ const OrderList = () => {
             key={index}
             onClick={() => typeof page === 'number' && handlePageChange(page)}
             className={`w-8 h-8 rounded-lg font-medium transition-colors ${currentPage === page
-                ? 'bg-light-border dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary'
-                : 'text-light-text-secondary dark:text-dark-text-secondary hover:bg-light-border dark:hover:bg-dark-border'
+              ? 'bg-light-border dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary'
+              : 'text-light-text-secondary dark:text-dark-text-secondary hover:bg-light-border dark:hover:bg-dark-border'
               }`}
             disabled={page === '...'}
           >
@@ -213,7 +213,7 @@ const OrderList = () => {
           <h2 className="text-xl font-semibold text-light-text-primary dark:text-dark-text-primary">Order List</h2>
         </div>
 
-        <div className="flex items-center justify-between bg-primary-light dark:bg-dark-border rounded-lg px-3 py-1">
+        <div className="flex items-center justify-between bg-primary-light dark:bg-dark-primary-light rounded-lg px-3 py-1">
           <div className="flex items-center space-x-2 text-sm text-light-text-secondary dark:text-dark-text-secondary">
             <button className="p-2 rounded-lg hover:bg-light-border hover:dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary transition-colors">
               <Plus className="h-4 w-4" />
@@ -245,58 +245,58 @@ const OrderList = () => {
                 </div>
               )}
             </div>
-<div className="relative" ref={sortPopoverRef}>
-  <button
-    onClick={() => setIsSortPopoverOpen(!isSortPopoverOpen)}
-    className="p-2 rounded-lg hover:bg-light-border hover:dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary transition-colors"
-  >
-    <BiSort className="h-4 w-4" />
-  </button>
-  {isSortPopoverOpen && (
-    <div className="absolute top-12 left-0 w-54 bg-light-surface dark:bg-dark-surface rounded-lg shadow-xl z-10 p-4 border border-light-border dark:border-dark-border">
-      <h4 className="font-semibold mb-2 text-light-text-primary dark:text-dark-text-primary">Sort by</h4>
-      <div className="mb-4">
-        <label htmlFor="sort-column" className="block text-sm font-medium text-light-text-primary dark:text-dark-text-primary mb-1">Column</label>
-        <select
-          id="sort-column"
-          className="w-full p-2 border border-light-border dark:border-dark-border rounded-lg bg-light-surface dark:bg-dark-surface text-light-text-primary dark:text-dark-text-primary appearance-none focus:outline-none focus:ring-1 focus:ring-accent-blue"
-          value={sortConfig.key}
-          onChange={(e) => setSortConfig(prev => ({ ...prev, key: e.target.value }))}
-        >
-          <option value="id">Order ID</option>
-          <option value="user">User</option>
-          <option value="project">Project</option>
-          <option value="address">Address</option>
-          <option value="date">Date</option>
-          <option value="status">Status</option>
-        </select>
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary mb-1">Order</label>
-        <div className="flex space-x-2">
-          <button
-            onClick={() => setSortConfig(prev => ({ ...prev, direction: 'ascending' }))}
-            className={`flex-1 p-2 rounded-lg text-sm font-medium ${sortConfig.direction === 'ascending'
-                ? 'bg-accent-blue text-white'
-                : 'bg-light-border dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary hover:bg-light-border dark:hover:bg-dark-border'
-              }`}
-          >
-            Ascending
-          </button>
-          <button
-            onClick={() => setSortConfig(prev => ({ ...prev, direction: 'descending' }))}
-            className={`flex-1 p-2 rounded-lg text-sm font-medium ${sortConfig.direction === 'descending'
-                ? 'bg-accent-blue text-white'
-                : 'bg-light-border dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary hover:bg-light-border dark:hover:bg-dark-border'
-              }`}
-          >
-            Descending
-          </button>
-        </div>
-      </div>
-    </div>
-  )}
-</div>
+            <div className="relative" ref={sortPopoverRef}>
+              <button
+                onClick={() => setIsSortPopoverOpen(!isSortPopoverOpen)}
+                className="p-2 rounded-lg hover:bg-light-border hover:dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary transition-colors"
+              >
+                <BiSort className="h-4 w-4" />
+              </button>
+              {isSortPopoverOpen && (
+                <div className="absolute top-12 left-0 w-54 bg-light-surface dark:bg-dark-surface rounded-lg shadow-xl z-10 p-4 border border-light-border dark:border-dark-border">
+                  <h4 className="font-semibold mb-2 text-light-text-primary dark:text-dark-text-primary">Sort by</h4>
+                  <div className="mb-4">
+                    <label htmlFor="sort-column" className="block text-sm font-medium text-light-text-primary dark:text-dark-text-primary mb-1">Column</label>
+                    <select
+                      id="sort-column"
+                      className="w-full p-2 border border-light-border dark:border-dark-border rounded-lg bg-light-surface dark:bg-dark-surface text-light-text-primary dark:text-dark-text-primary appearance-none focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                      value={sortConfig.key}
+                      onChange={(e) => setSortConfig(prev => ({ ...prev, key: e.target.value }))}
+                    >
+                      <option value="id">Order ID</option>
+                      <option value="user">User</option>
+                      <option value="project">Project</option>
+                      <option value="address">Address</option>
+                      <option value="date">Date</option>
+                      <option value="status">Status</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary mb-1">Order</label>
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => setSortConfig(prev => ({ ...prev, direction: 'ascending' }))}
+                        className={`flex-1 p-2 rounded-lg text-sm font-medium ${sortConfig.direction === 'ascending'
+                          ? 'bg-accent-blue text-white'
+                          : 'bg-light-border dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary hover:bg-light-border dark:hover:bg-dark-border'
+                          }`}
+                      >
+                        Ascending
+                      </button>
+                      <button
+                        onClick={() => setSortConfig(prev => ({ ...prev, direction: 'descending' }))}
+                        className={`flex-1 p-2 rounded-lg text-sm font-medium ${sortConfig.direction === 'descending'
+                          ? 'bg-accent-blue text-white'
+                          : 'bg-light-border dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary hover:bg-light-border dark:hover:bg-dark-border'
+                          }`}
+                      >
+                        Descending
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="relative w-full sm:w-48">
