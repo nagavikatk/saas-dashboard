@@ -27,9 +27,12 @@ const MainLayout = () => {
             <Outlet />
           </main>
         </div>
+      {/* </div> */}
+        {isNotificationsOpen && (
+          <Notifications isOpen={isNotificationsOpen} onClose={toggleNotifications} />
+        )}
       </div>
-      <Notifications isOpen={isNotificationsOpen} onClose={toggleNotifications} />
-    </>
+     </>
   );
 };
 

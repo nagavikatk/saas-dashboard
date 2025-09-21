@@ -1,67 +1,73 @@
-import React, { useContext } from 'react';
-import { Search, Bell, Menu, HelpCircle, Settings, Sun, Moon } from 'lucide-react';
-import { ThemeContext } from '../contexts/ThemeContext';
-import Notifications from '../components/common/Notifications';
+import React from 'react';
+import {
+  PanelLeft,
+  Star,
+  Search,
+  Command,
+  Sun,
+  Bell,
+  PanelRight,
+  RefreshCw
+} from 'lucide-react';
 
-// You'll need to pass 'setSidebarOpen' as a prop from your main layout component
-const Header = ({ setSidebarOpen, isNotificationsOpen, toggleNotifications }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
-
+/**
+ * A modern, responsive header component for a SaaS dashboard.
+ * It includes breadcrumbs, a search bar, and action icons, styled with Tailwind CSS.
+ */
+const Header = () => {
   return (
-    <header className="bg-white border-b border-border p-4 flex items-center justify-between relative">
-      {/* Left Side */}
-      <div className="flex items-center gap-4">
-        <button onClick={() => setSidebarOpen(prev => !prev)} className="text-gray p-1 rounded-md hover:bg-light">
-          <Menu size={24} />
-        </button>
-        <h1 className="text-xl font-semibold text-dark">Default</h1>
-      </div>
-
-      {/* Middle: Search Bar */}
-      <div className="relative w-full max-w-xs">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Search className="text-gray" size={20} />
-        </div>
-        <input
-          type="text"
-          placeholder="Search..."
-          className="w-full bg-light-bg border border-border rounded-md py-2 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-primary"
-        />
-      </div>
-
-      {/* Right Side */}
-      <div className="flex items-center gap-4">
-        <button className="text-gray p-2 rounded-full hover:bg-light">
-          <HelpCircle size={22} />
-        </button>
-        <button className="text-gray p-2 rounded-full hover:bg-light">
-          <Settings size={22} />
-        </button>
-        <button 
-          className="text-gray p-2 rounded-full hover:bg-light relative"
-          onClick={toggleNotifications}
-        >
-          <Bell size={22} />
-          <span className="absolute top-2 right-2 block h-2 w-2 rounded-full bg-red-500"></span>
-        </button>
-        {/* Theme Toggle Button */}
-        <button className="text-gray p-2 rounded-full hover:bg-light" onClick={toggleTheme}>
-          {theme === 'dark' ? <Sun size={22} /> : <Moon size={22} />}
-        </button>
-        <div className="flex items-center gap-3">
-          <img
-            src="https://i.pravatar.cc/40" // Replace with actual user avatar URL
-            alt="User Avatar"
-            className="w-10 h-10 rounded-full"
-          />
-          <div>
-            <p className="font-semibold text-dark text-sm">Andi Lane</p>
+    <header className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 w-full">
+      <div className="flex items-center justify-between p-4 h-16">
+        {/* Left Section: Breadcrumbs and Favorites */}
+        <div className="flex items-center space-x-4">
+          <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+            <PanelLeft size={20} />
+          </button>
+          <button className="text-gray-500 hover:text-yellow-500 dark:text-gray-400 dark:hover:text-yellow-400 transition-colors">
+            <Star size={20} />
+          </button>
+          <div className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="font-medium">Dashboards</span>
+            <span className="mx-2">/</span>
+            <span className="font-semibold text-gray-800 dark:text-gray-100">Default</span>
           </div>
         </div>
+
+        {/* Right Section: Search and Action Icons */}
+        <div className="flex items-center space-x-4">
+          {/* Search Bar */}
+          <div className="relative hidden md:flex items-center">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-64 pl-10 pr-10 py-2 text-sm bg-slate-100 dark:bg-slate-800 border border-transparent rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            />
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 border border-gray-300 dark:border-gray-600 rounded-md p-0.5">
+                <Command size={12} />
+            </div>
+          </div>
+
+          {/* Action Icons */}
+          <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+            <Sun size={20} />
+          </button>
+          <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+            <RefreshCw size={20} />
+          </button>
+          <button className="relative text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+            <Bell size={20} />
+            {/* Notification dot */}
+            <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-900"></span>
+          </button>
+          <button className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors">
+            <PanelRight size={20} />
+          </button>
+        </div>
       </div>
-      <Notifications isOpen={isNotificationsOpen} onClose={toggleNotifications} />
     </header>
   );
 };
 
 export default Header;
+

@@ -1,17 +1,20 @@
 /** @type {import('tailwindcss').Config} */
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: 'class',
   theme: {
     fontFamily: {
-      sans: ['Inter', 'sans-serif'],
-      inter: ['Inter', 'sans-serif'], // Added 'inter' font family
+      sans: ['Inter', ...defaultTheme.fontFamily.sans],
+      inter: ['Inter', ...defaultTheme.fontFamily.sans],
     },
     extend: {
       boxShadow: {
         'card-shadow': '0px 10px 30px 0px rgba(17, 24, 39, 0.05)',
       },
       colors: {
+        ...defaultTheme.colors, // This line is crucial!
         'page-light': '#F8FAFC',
         'light-surface': '#FFFFFF',
         'light-text-primary': '#0F172A',

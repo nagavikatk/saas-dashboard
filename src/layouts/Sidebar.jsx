@@ -53,7 +53,16 @@ const activeLinkStyle = "bg-[#e1f3fe] text-[#3B82F6] font-semibold";
 const Sidebar = () => {
   return (
     <aside className="w-64 flex-shrink-0 border-r border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface p-6 hidden lg:flex flex-col">
-      <h1 className="text-xl font-bold text-light-text-primary dark:text-dark-text-primary mb-8">ByeWind</h1>
+      <div className="flex items-center gap-3 mb-8">
+          <img
+            src="https://i.pravatar.cc/40" // Replace with actual user avatar URL
+            alt="User Avatar"
+            className="w-10 h-10 rounded-full"
+          />
+          <div>
+            <p className="font-semibold text-dark text-sm">ByeWind</p>
+          </div>
+        </div>
       <nav className="flex-1 flex flex-col gap-y-6">
         {navSections.map((section) => (
           <div key={section.title}>
