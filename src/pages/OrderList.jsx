@@ -29,7 +29,7 @@ const OrderList = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [filterPopoverRef]);
+  }, []); // Empty dependency array to run once on mount
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -42,7 +42,7 @@ const OrderList = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [sortPopoverRef]);
+  }, []); // Empty dependency array to run once on mount
 
   const filteredAndSortedOrders = useMemo(() => {
     let filteredData = orderListData.filter(order =>
@@ -226,7 +226,7 @@ const OrderList = () => {
                 <Filter className="h-4 w-4" />
               </button>
               {isFilterPopoverOpen && (
-                <div className="absolute top-12 left-0 w-48 bg-light-surface dark:bg-dark-surface rounded-lg shadow-xl z-10 p-4 border border-light-border dark:border-dark-border">
+                <div ref={filterPopoverRef} className="absolute top-12 left-0 w-48 bg-light-surface dark:bg-dark-surface rounded-lg shadow-xl z-10 p-4 border border-light-border dark:border-dark-border">
                   <h4 className="font-semibold mb-2 text-light-text-primary dark:text-dark-text-primary">Filter by Status</h4>
                   {['Inprogress', 'Complete', 'Pending', 'Approved', 'Rejected'].map(status => (
                     <div key={status} className="flex items-center mb-2">

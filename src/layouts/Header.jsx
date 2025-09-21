@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react';
+import React, { useState, useEffect, useCallback, useContext, useRef } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
 import {
   PanelLeft,
@@ -23,7 +23,8 @@ const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [isNotificationPopoverOpen, setIsNotificationPopoverOpen] = useState(false); // New state for notification popover
+  const [isNotificationPopoverOpen, setIsNotificationPopoverOpen] = useState(false);
+  const notificationPopoverRef = useRef(null);
 
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
 
@@ -44,7 +45,20 @@ const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
     handleSearch(debouncedSearchQuery);
   }, [debouncedSearchQuery, handleSearch]);
 
-  const toggleNotificationPopover = () => setIsNotificationPopoverOpen(!isNotificationPopoverOpen); // New toggle function
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (notificationPopoverRef.current && !notificationPopoverRef.current.contains(event.target)) {
+        setIsNotificationPopoverOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const toggleNotificationPopover = () => setIsNotificationPopoverOpen(!isNotificationPopoverOpen);
 
   return (
     <header className="bg-white dark:bg-dark-surface border-b border-light-border dark:border-dark-border w-full">
@@ -91,7 +105,7 @@ const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
           <button className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors">
             <RefreshCw size={20} />
           </button>
-          <div className="relative">
+          <div className="relative" ref={notificationPopoverRef}>
             <button
               onClick={toggleNotificationPopover}
               className="flex items-center justify-center text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors"
