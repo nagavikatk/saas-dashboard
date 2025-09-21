@@ -50,9 +50,9 @@ const navSections = [
 const linkStyle = "flex items-center gap-x-3 rounded-lg px-3 py-2 text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary hover:bg-accent-blue-light dark:hover:bg-dark-border";
 const activeLinkStyle = "bg-[#e1f3fe] text-[#3B82F6] font-semibold";
 
-const Sidebar = () => {
+const Sidebar = ({ isCollapsed }) => {
   return (
-    <aside className="w-64 flex-shrink-0 border-r border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface p-6 hidden lg:flex flex-col">
+    <aside className={`w-64 flex-shrink-0 border-r border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface p-6 flex-col ${isCollapsed ? 'hidden' : 'hidden lg:flex'}`}>
       <div className="flex items-center gap-3 mb-8">
           <img
             src="https://i.pravatar.cc/40" // Replace with actual user avatar URL

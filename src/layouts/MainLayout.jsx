@@ -19,7 +19,8 @@ const MainLayout = () => {
           className="flex-1 flex flex-col transition-all duration-300"
         >
           <Header 
-            setSidebarOpen={setIsSidebarCollapsed} 
+            toggleSidebar={toggleSidebar}
+            isSidebarCollapsed={isSidebarCollapsed}
             isNotificationsOpen={isNotificationsOpen}
             toggleNotifications={toggleNotifications}
           />
