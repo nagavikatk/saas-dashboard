@@ -10,7 +10,7 @@ const StatsCard = ({ title, value, prefix = '', suffix = '', change, isPositive,
           {prefix}{value}{suffix}
         </p>
         <div className={`flex items-center gap-1 text-xs lg:text-sm font-semibold min-w-0 ${isPositive ? 'text-status-green' : `${textClass}`}`}>
-          {isPositive ? <ArrowUpRight size={12} /> : <ArrowDownRight size={12} />}
+          {isPositive ? <ArrowUpRight data-testid="arrow-up-right" size={12} /> : <ArrowDownRight data-testid="arrow-down-right" size={12} />}
           <span>{change}</span>
         </div>
       </div>

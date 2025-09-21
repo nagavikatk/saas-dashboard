@@ -5,5 +5,10 @@ export default defineConfig({
   plugins: [react()],
   css: {
     postcss: './postcss.config.js'
-  }
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.js',
+  },
 })

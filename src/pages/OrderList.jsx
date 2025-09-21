@@ -168,6 +168,7 @@ const OrderList = () => {
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
           className="w-8 h-8 flex items-center justify-center rounded-lg text-light-text-secondary dark:text-dark-text-secondary hover:bg-light-border dark:hover:bg-dark-border disabled:opacity-50 transition-colors"
+          aria-label="Previous page"
         >
           <ChevronDown className="h-4 w-4 transform rotate-90" />
         </button>
@@ -180,6 +181,7 @@ const OrderList = () => {
               : 'text-light-text-secondary dark:text-dark-text-secondary hover:bg-light-border dark:hover:bg-dark-border'
               }`}
             disabled={page === '...'}
+            aria-label={`Page ${page}`}
           >
             {page}
           </button>
@@ -188,6 +190,7 @@ const OrderList = () => {
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
           className="w-8 h-8 flex items-center justify-center rounded-lg text-light-text-secondary dark:text-dark-text-secondary hover:bg-light-border dark:hover:bg-dark-border disabled:opacity-50 transition-colors"
+          aria-label="Next page"
         >
           <ChevronDown className="h-4 w-4 transform -rotate-90" />
         </button>

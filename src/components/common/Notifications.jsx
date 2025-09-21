@@ -10,7 +10,7 @@ const notificationsData = [
 
 const Notifications = ({ className = '' }) => {
   return (
-    <div className={`space-y-4 ${className}`}>
+    <div data-testid="notifications-container" className={`space-y-4 ${className}`}>
       {notificationsData.map((item, index) => (
         <div key={index} className="flex items-center space-x-3">
           <div className="flex-shrink-0">
