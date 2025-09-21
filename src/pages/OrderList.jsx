@@ -106,7 +106,7 @@ const OrderList = () => {
 
   const getStatusClasses = (status) => {
     switch (status) {
-      case 'In Progress':
+      case 'Inprogress':
         return 'text-status-blue';
       case 'Complete':
         return 'text-status-green';
@@ -123,7 +123,7 @@ const OrderList = () => {
 
   const getStatusDotColor = (status) => {
     switch (status) {
-      case 'In Progress':
+      case 'Inprogress':
         return 'bg-status-blue';
       case 'Complete':
         return 'bg-status-green';
@@ -168,7 +168,6 @@ const OrderList = () => {
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
           className="w-8 h-8 flex items-center justify-center rounded-lg text-light-text-secondary dark:text-dark-text-secondary hover:bg-light-border dark:hover:bg-dark-border disabled:opacity-50 transition-colors"
-          aria-label="Previous page"
         >
           <ChevronDown className="h-4 w-4 transform rotate-90" />
         </button>
@@ -181,7 +180,6 @@ const OrderList = () => {
               : 'text-light-text-secondary dark:text-dark-text-secondary hover:bg-light-border dark:hover:bg-dark-border'
               }`}
             disabled={page === '...'}
-            aria-label={`Page ${page}`}
           >
             {page}
           </button>
@@ -190,7 +188,6 @@ const OrderList = () => {
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
           className="w-8 h-8 flex items-center justify-center rounded-lg text-light-text-secondary dark:text-dark-text-secondary hover:bg-light-border dark:hover:bg-dark-border disabled:opacity-50 transition-colors"
-          aria-label="Next page"
         >
           <ChevronDown className="h-4 w-4 transform -rotate-90" />
         </button>
@@ -231,7 +228,7 @@ const OrderList = () => {
               {isFilterPopoverOpen && (
                 <div className="absolute top-12 left-0 w-48 bg-light-surface dark:bg-dark-surface rounded-lg shadow-xl z-10 p-4 border border-light-border dark:border-dark-border">
                   <h4 className="font-semibold mb-2 text-light-text-primary dark:text-dark-text-primary">Filter by Status</h4>
-                  {['In Progress', 'Complete', 'Pending', 'Approved', 'Rejected'].map(status => (
+                  {['Inprogress', 'Complete', 'Pending', 'Approved', 'Rejected'].map(status => (
                     <div key={status} className="flex items-center mb-2">
                       <input
                         type="checkbox"
