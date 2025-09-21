@@ -15,17 +15,19 @@ import Breadcrumbs from '../components/common/Breadcrumbs';
 import SearchResults from '../components/common/SearchResults';
 import { topSellingProducts } from '../data/mockData';
 import { useDebounce } from '../hooks/useDebounce';
+import Notifications from '../components/common/Notifications'; // Import Notifications component for popover
 
 /**
  * A modern, responsive header component for a SaaS dashboard.
  * It includes breadcrumbs, a search bar, and action icons, styled with Tailwind CSS.
  */
-const Header = ({ toggleSidebar, isSidebarCollapsed }) => {
+const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [isNotificationPopoverOpen, setIsNotificationPopoverOpen] = useState(false); // New state for notification popover
 
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
 
@@ -45,6 +47,8 @@ const Header = ({ toggleSidebar, isSidebarCollapsed }) => {
   useEffect(() => {
     handleSearch(debouncedSearchQuery);
   }, [debouncedSearchQuery, handleSearch]);
+
+  const toggleNotificationPopover = () => setIsNotificationPopoverOpen(!isNotificationPopoverOpen); // New toggle function
 
   return (
     <header className="bg-white dark:bg-dark-surface border-b border-light-border dark:border-dark-border w-full">
@@ -95,12 +99,25 @@ const Header = ({ toggleSidebar, isSidebarCollapsed }) => {
           <button className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors">
             <RefreshCw size={20} />
           </button>
-          <button className="relative text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors">
-            <Bell size={20} />
-            {/* Notification dot */}
-            <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-900"></span>
-          </button>
-          <button className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors">
+          <div className="relative"> {/* Wrap button and popover in a relative div */}
+            <button
+              onClick={toggleNotificationPopover} // Add onClick handler
+              className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors"
+            >
+              <Bell size={20} />
+              {/* Notification dot */}
+              <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-900"></span>
+            </button>
+            {isNotificationPopoverOpen && (
+              <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-dark-surface border border-light-border dark:border-dark-border rounded-lg shadow-lg overflow-hidden z-20">
+                <Notifications isOpen={isNotificationPopoverOpen} onClose={toggleNotificationPopover} /> {/* Render Notifications component */}
+              </div>
+            )}
+          </div>
+          <button
+            onClick={toggleRightPanel} // Add onClick handler
+            className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors"
+          >
             <PanelRight size={20} />
           </button>
         </div>
