@@ -55,7 +55,7 @@ const Sidebar = ({ isCollapsed }) => {
     <aside className={`w-64 flex-shrink-0 border-r border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface p-6 flex-col ${isCollapsed ? 'hidden' : 'hidden lg:flex'}`}>
       <div className="flex items-center gap-3 mb-8">
           <img
-            src="https://i.pravatar.cc/40" // Replace with actual user avatar URL
+            src="https://i.pravatar.cc/40"
             alt="User Avatar"
             className="w-10 h-10 rounded-full"
           />
@@ -77,7 +77,7 @@ const Sidebar = ({ isCollapsed }) => {
                   className={({ isActive }) =>
                     isActive ? `${linkStyle} ${activeLinkStyle}` : linkStyle
                   }
-                  end={link.path === '/'} // Use 'end' prop for the root path to avoid matching all routes
+                  end={link.path === '/'}
                 >
                   <link.icon className="h-5 w-5" />
                   {link.name}

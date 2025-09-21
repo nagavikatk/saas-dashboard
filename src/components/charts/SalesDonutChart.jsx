@@ -13,11 +13,10 @@ const SalesDonutChart = () => {
     <div className="rounded-xl">
       <h3 className="text-lg font-semibold text-light-text-primary dark:text-dark-text-primary mb-4">Total Sales</h3>
       <div className="flex flex-col items-center">
-        <div className="w-full h-44 relative"> {/* Add relative positioning */}
+        <div className="w-full h-44 relative">
           <ResponsiveContainer>
             <PieChart>
               <Pie
-                // Adjust radius to make the donut thicker
                 innerRadius={45}
                 outerRadius={75}
                 data={data}

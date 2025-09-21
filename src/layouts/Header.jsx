@@ -15,12 +15,8 @@ import Breadcrumbs from '../components/common/Breadcrumbs';
 import SearchResults from '../components/common/SearchResults';
 import { topSellingProducts } from '../data/mockData';
 import { useDebounce } from '../hooks/useDebounce';
-import Notifications from '../components/common/Notifications'; // Import Notifications component for popover
+import Notifications from '../components/common/Notifications';
 
-/**
- * A modern, responsive header component for a SaaS dashboard.
- * It includes breadcrumbs, a search bar, and action icons, styled with Tailwind CSS.
- */
 const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [searchQuery, setSearchQuery] = useState('');
@@ -53,7 +49,6 @@ const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
   return (
     <header className="bg-white dark:bg-dark-surface border-b border-light-border dark:border-dark-border w-full">
       <div className="flex items-center justify-between p-4 h-16">
-        {/* Left Section: Breadcrumbs and Favorites */}
         <div className="flex items-center space-x-4">
           <button
             onClick={toggleSidebar}
@@ -67,9 +62,7 @@ const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
           <Breadcrumbs />
         </div>
 
-        {/* Right Section: Search and Action Icons */}
         <div className="flex items-center space-x-4">
-          {/* Search Bar */}
           <div className="relative hidden md:flex items-center">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
             <input
@@ -89,7 +82,6 @@ const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
             )}
           </div>
 
-          {/* Action Icons */}
           <button
             onClick={toggleTheme}
             className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors"
@@ -99,13 +91,12 @@ const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
           <button className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors">
             <RefreshCw size={20} />
           </button>
-          <div className="relative"> {/* Wrap button and popover in a relative div */}
+          <div className="relative">
             <button
-              onClick={toggleNotificationPopover} // Add onClick handler
+              onClick={toggleNotificationPopover}
               className="flex items-center justify-center text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors"
             >
               <Bell size={20} />
-              {/* Notification dot */}
               <span className="absolute top-0.5 right-0.5 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white dark:ring-gray-900"></span>
             </button>
             {isNotificationPopoverOpen && (
@@ -115,7 +106,7 @@ const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
             )}
           </div>
           <button
-            onClick={toggleRightPanel} // Add onClick handler
+            onClick={toggleRightPanel}
             className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors"
           >
             <PanelRight size={20} />

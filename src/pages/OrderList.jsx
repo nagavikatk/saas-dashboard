@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { ChevronDown, Calendar, Search, Sliders, Menu, Plus, Filter, MoreHorizontal } from 'lucide-react';
 import Card from '../components/common/Card';
-import { orderListData } from '../data/mockData'; // Assuming this data is available
+import { orderListData } from '../data/mockData';
 import { BiSort } from 'react-icons/bi';
 
 const OrderList = () => {
@@ -16,7 +16,7 @@ const OrderList = () => {
   const [isSortPopoverOpen, setIsSortPopoverOpen] = useState(false);
   const sortPopoverRef = useRef(null);
 
-  const itemsPerPage = 8; // Based on the design
+  const itemsPerPage = 8;
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -120,7 +120,7 @@ const OrderList = () => {
       case 'Pending':
         return 'text-status-yellow';
       case 'Approved':
-        return 'text-purple'; // Using purple from the new config
+        return 'text-purple';
       case 'Rejected':
         return 'text-status-red';
       default:
@@ -137,7 +137,7 @@ const OrderList = () => {
       case 'Pending':
         return 'bg-status-yellow';
       case 'Approved':
-        return 'bg-purple'; // Using purple from the new config
+        return 'bg-purple';
       case 'Rejected':
         return 'bg-status-red';
       default:
@@ -221,7 +221,6 @@ const OrderList = () => {
           <h2 className="text-xl font-semibold text-light-text-primary dark:text-dark-text-primary">Order List</h2>
         </div>
 
-        {/* Row 2: Icons and Search */}
         <div className="flex items-center justify-between bg-primary-light dark:bg-dark-border rounded-lg px-3 py-1">
           {/* Left side: Icons */}
           <div className="flex items-center space-x-2 text-sm text-light-text-secondary dark:text-dark-text-secondary">
@@ -309,8 +308,6 @@ const OrderList = () => {
             </div>
           </div>
 
-          {/* Right side: Search */}
-          {/* Right side: Search */}
           <div className="relative w-full sm:w-48">
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <Search className="h-4 w-4 text-light-text-secondary dark:text-dark-text-secondary" />

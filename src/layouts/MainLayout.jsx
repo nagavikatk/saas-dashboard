@@ -16,7 +16,7 @@ const MainLayout = () => {
 
   return (
     <>
-      <div className="flex h-screen bg-light-surface dark:bg-page-dark">
+      <div className="flex h-screen bg-light-surface dark:bg-page-dark overflow-y-auto">
         <Sidebar isCollapsed={isSidebarCollapsed} />
         <div
           className={`flex-1 flex flex-col transition-all duration-300 ${isRightPanelOpen ? 'mr-80' : ''}`}
@@ -28,7 +28,7 @@ const MainLayout = () => {
             toggleNotifications={toggleNotifications}
             toggleRightPanel={toggleRightPanel} // Pass new toggle function
           />
-          <main className="flex-1 overflow-x-hidden overflow-y-auto p-6">
+          <main className="flex-1 p-6">
             <Outlet />
           </main>
         </div>

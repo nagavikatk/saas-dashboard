@@ -34,7 +34,6 @@ const WorldMapChart = () => {
                 default: '#A8C5DA'
               },
               values: {
-                // Dummy values to apply default fill to all regions
               }
             }]
           }}

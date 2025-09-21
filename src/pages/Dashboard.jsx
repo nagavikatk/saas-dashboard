@@ -32,8 +32,6 @@ const Dashboard = () => {
 
   return (
     <main className="flex-1 p-6 bg-light-surface dark:bg-dark-surface gap-10">
-      {/* The 3x2 grid of dashboard components will go here */}
-      {/* First Row */}
       <div className="flex flex-col lg:flex-row gap-10 mb-10">
         <div className="w-full lg:flex-1 flex" >
           <div className="grid grid-cols-2 gap-10 flex-grow">
@@ -49,7 +47,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Second Row */}
       <div className="flex flex-col lg:flex-row gap-10 mb-10">
         <div className="w-full lg:flex-[3]">
           <Card className='bg-primary-light dark:bg-dark-primary-light'>
@@ -63,7 +60,6 @@ const Dashboard = () => {
         </div>
       </div>
 
-      {/* Third Row */}
       <div className="flex flex-col lg:flex-row gap-10">
         <div className="w-full lg:flex-[3]">
           <Card className='bg-primary-light dark:bg-dark-primary-light'>
