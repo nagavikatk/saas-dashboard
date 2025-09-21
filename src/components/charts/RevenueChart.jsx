@@ -13,18 +13,18 @@ const data = [
 
 const RevenueChart = () => {
     return (
-        <div className="bg-primary-light rounded-xl">
+        <div className="bg-primary-light dark:bg-dark-primary-light p-4 rounded-xl">
             <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-dark">Revenue</h3>
+                <h3 className="text-lg font-semibold text-light-text-primary dark:text-dark-text-primary">Revenue</h3>
                 {/* Custom Legend because recharts legend is hard to style perfectly */}
                 <div className="flex items-center gap-4 text-sm">
                     <div className="flex items-center gap-2">
                         <span className="w-3 h-3 rounded-full bg-dark"></span>
-                        <span className="text-gray">Current Week: $56,211</span>
+                        <span className="text-light-text-primary dark:text-dark-text-primary">Current Week: $56,211</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <span className="w-3 h-0.5 bg-gray border-dashed border-2 border-gray"></span>
-                         <span className="text-gray">Previous Week: $68,768</span>
+                         <span className="text-light-text-primary dark:text-dark-text-primary">Previous Week: $68,768</span>
                     </div>
                 </div>
             </div>

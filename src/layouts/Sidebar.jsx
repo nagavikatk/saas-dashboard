@@ -60,7 +60,7 @@ const Sidebar = ({ isCollapsed }) => {
             className="w-10 h-10 rounded-full"
           />
           <div>
-            <p className="font-semibold text-dark text-sm">ByeWind</p>
+            <p className="font-semibold text-light-text-primary dark:text-dark-text-primary text-sm">ByeWind</p>
           </div>
         </div>
       <nav className="flex-1 flex flex-col gap-y-6">

@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
 import StatsCard from '../components/common/StatsCard';
 import ProjectionsChart from '../components/charts/ProjectionsChart';
 import RevenueChart from '../components/charts/RevenueChart';
@@ -8,11 +10,17 @@ import Card from '../components/common/Card';
 import { topSellingProducts } from '../data/mockData';
 
 const Dashboard = () => {
+  const { theme } = useContext(ThemeContext);
+
+  const getBgClass = (lightClass, darkClass) => {
+    return theme === 'dark' ? darkClass : lightClass;
+  };
+
   const statsData = [
-    { title: 'Customers', value: '3,781', change: '+11.01%', isPositive: true, bgClass:"bg-primary-blue" },
-    { title: 'Orders', value: '1,219', change: '-0.03%', isPositive: false, bgClass:"bg-primary-light" },
-    { title: 'Revenue', value: '$695', change: '+15.03%', isPositive: true, bgClass:"bg-primary-light" },
-    { title: 'Growth', value: '30.1%', change: '+14.98%', isPositive: true, bgClass:"bg-primary-purple" }
+    { title: 'Customers', value: '3,781', change: '+11.01%', isPositive: true, bgClass: getBgClass('bg-primary-blue', 'bg-primary-blue'), textClass: 'text-dark' },
+    { title: 'Orders', value: '1,219', change: '-0.03%', isPositive: false, bgClass: getBgClass('bg-primary-light', 'bg-dark-primary-light'), textClass: getBgClass('text-light-text-primary','dark:text-dark-text-primary') },
+    { title: 'Revenue', value: '$695', change: '+15.03%', isPositive: true, bgClass: getBgClass('bg-primary-light', 'bg-dark-primary-light') , textClass: getBgClass('text-light-text-primary','dark:text-dark-text-primary')},
+    { title: 'Growth', value: '30.1%', change: '+14.98%', isPositive: true, bgClass: getBgClass('bg-primary-purple', 'bg-primary-purple'), textClass: 'text-dark' }
   ];
 
   const columns = [
@@ -35,7 +43,7 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="w-full lg:w-1/2">
-          <Card className='bg-primary-light'>
+          <Card className='bg-primary-light dark:bg-dark-primary-light'>
             <ProjectionsChart />
           </Card>
         </div>
@@ -44,12 +52,12 @@ const Dashboard = () => {
       {/* Second Row */}
       <div className="flex flex-col lg:flex-row gap-10 mb-10">
         <div className="w-full lg:w-[75%]">
-          <Card className='bg-primary-light'>
+          <Card className='bg-primary-light dark:bg-dark-primary-light'>
             <RevenueChart />
           </Card>
         </div>
         <div className="w-full lg:w-[25%] flex">
-          <Card className='bg-primary-light flex-grow'>
+          <Card className='bg-primary-light flex-grow dark:bg-dark-primary-light'>
             <WorldMapChart />
           </Card>
         </div>
@@ -58,7 +66,7 @@ const Dashboard = () => {
       {/* Third Row */}
       <div className="flex flex-col lg:flex-row gap-10">
         <div className="w-full lg:w-[75%]">
-          <Card className='bg-primary-light'>
+          <Card className='bg-primary-light dark:bg-dark-primary-light'>
             <DataTable 
               columns={columns}
               data={topSellingProducts.splice(0, 6)}
@@ -67,7 +75,7 @@ const Dashboard = () => {
           </Card>
         </div>
         <div className="w-full lg:w-[25%] flex">
-          <Card className='bg-primary-light flex-grow'>
+          <Card className='bg-primary-light flex-grow dark:bg-dark-primary-light'>
             <SalesDonutChart />
           </Card>
         </div>

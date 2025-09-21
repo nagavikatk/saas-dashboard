@@ -12,7 +12,7 @@ const data = [
 const ProjectionsChart = () => {
   return (
     <div className="flex flex-col items-start w-full">
-      <h3 className="text-lg font-medium text-dark dark:text-dark-text-secondary mb-4">
+      <h3 className="text-lg font-medium text-light-text-primary dark:text-dark-text-primary mb-4">
         Projections vs Actuals
       </h3>
       <div className="w-full h-[250px]">

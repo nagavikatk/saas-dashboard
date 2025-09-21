@@ -11,7 +11,7 @@ const DataTable = ({ columns, data, title }) => {
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead className="border-b-2 border-light-border dark:border-dark-border">
-            <tr className="text-left text-sm text-gray">
+            <tr className="text-left text-sm text-light-text-primary dark:text-dark-text-primary">
               {columns.map((column) => (
                 <th
                   key={column.key}
@@ -28,7 +28,7 @@ const DataTable = ({ columns, data, title }) => {
                 {columns.map((column) => (
                   <td
                     key={column.key}
-                    className={`py-3 ${column.key === 'name' ? 'text-dark font-semibold' : 'text-gray'}`}
+                    className={`py-3 ${column.key === 'name' ? 'text-light-text-primary dark:text-dark-text-primary font-semibold' : 'text-light-text-primary dark:text-dark-text-primary'}`}
                   >
                     {row[column.key]}
                   </td>

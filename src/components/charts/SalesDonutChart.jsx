@@ -11,7 +11,7 @@ const data = [
 const SalesDonutChart = () => {
   return (
     <div className="rounded-xl">
-      <h3 className="text-lg font-semibold text-dark mb-4">Total Sales</h3>
+      <h3 className="text-lg font-semibold text-light-text-primary dark:text-dark-text-primary mb-4">Total Sales</h3>
       <div className="flex flex-col items-center">
         <div className="w-full h-44 relative"> {/* Add relative positioning */}
           <ResponsiveContainer>
@@ -40,9 +40,9 @@ const SalesDonutChart = () => {
             <div key={entry.name} className="flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }}></span>
-                <p className="text-gray">{entry.name}</p>
+                <p className="text-light-text-primary dark:text-dark-text-primary">{entry.name}</p>
               </div>
-              <p className="font-semibold text-dark">${entry.value.toFixed(2)}</p>
+              <p className="font-semibold text-light-text-primary dark:text-dark-text-primary">${entry.value.toFixed(2)}</p>
             </div>
           ))}
         </div>
