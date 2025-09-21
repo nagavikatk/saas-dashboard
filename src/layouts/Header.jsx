@@ -110,7 +110,7 @@ const Header = ({ toggleSidebar, isSidebarCollapsed, toggleRightPanel }) => {
             </button>
             {isNotificationPopoverOpen && (
               <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-dark-surface border border-light-border dark:border-dark-border rounded-lg shadow-lg overflow-hidden z-20">
-                <Notifications isOpen={isNotificationPopoverOpen} onClose={toggleNotificationPopover} /> {/* Render Notifications component */}
+                <Notifications isOpen={isNotificationPopoverOpen} onClose={toggleNotificationPopover} className="p-4" /> {/* Render Notifications component */}
               </div>
             )}
           </div>
