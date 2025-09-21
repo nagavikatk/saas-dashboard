@@ -2,7 +2,7 @@ const DataTable = ({ columns, data, title }) => {
   return (
     <div className="overflow-hidden">
       {title && (
-        <div className="p-6">
+        <div>
           <h3 className="font-semibold text-light-text-primary dark:text-dark-text-primary">
             {title}
           </h3>
@@ -10,25 +10,25 @@ const DataTable = ({ columns, data, title }) => {
       )}
       <div className="overflow-x-auto">
         <table className="w-full">
-          <thead>
+          <thead className="border-b-2 border-light-border dark:border-dark-border">
             <tr className="text-left text-sm text-gray">
               {columns.map((column) => (
                 <th
                   key={column.key}
-                  className="font-medium py-3 px-4"
+                  className="font-medium py-3"
                 >
                   {column.label}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-border">
+          <tbody>
             {data.map((row, index) => (
               <tr key={index}>
                 {columns.map((column) => (
                   <td
                     key={column.key}
-                    className={`py-3 px-4 ${column.key === 'name' ? 'text-dark font-semibold' : 'text-gray'}`}
+                    className={`py-3 ${column.key === 'name' ? 'text-dark font-semibold' : 'text-gray'}`}
                   >
                     {row[column.key]}
                   </td>

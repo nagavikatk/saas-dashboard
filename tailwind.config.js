@@ -48,6 +48,10 @@ export default {
         'primary-purple':'#E5ECF6',
         'secondary-cyan':'#A8C5DA',
         'secondary-cyan-light':'#e6f5ffff',
+        'secondary-indigo':'#95A4FC',
+        'secondary-blue':'#B1E3FF',
+        'secondary-mint':'#BAEDBD',
+        'primary-brand':'#1C1C1C'
       },
       fontSize: {
         'xxs': '0.6875rem',

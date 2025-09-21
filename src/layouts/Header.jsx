@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
 import {
   PanelLeft,
   Star,
   Search,
   Command,
   Sun,
+  Moon,
   Bell,
   PanelRight,
   RefreshCw
@@ -19,6 +21,7 @@ import { useDebounce } from '../hooks/useDebounce';
  * It includes breadcrumbs, a search bar, and action icons, styled with Tailwind CSS.
  */
 const Header = ({ toggleSidebar, isSidebarCollapsed }) => {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -83,8 +86,11 @@ const Header = ({ toggleSidebar, isSidebarCollapsed }) => {
           </div>
 
           {/* Action Icons */}
-          <button className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors">
-            <Sun size={20} />
+          <button
+            onClick={toggleTheme}
+            className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors"
+          >
+            {theme === 'light' ? <Sun size={20} /> : <Moon size={20} />}
           </button>
           <button className="text-light-text-secondary hover:text-gray-700 dark:text-dark-text-secondary dark:hover:text-gray-200 transition-colors">
             <RefreshCw size={20} />

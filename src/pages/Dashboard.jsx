@@ -42,7 +42,7 @@ const Dashboard = () => {
       </div>
 
       {/* Second Row */}
-      <div className="flex flex-col lg:flex-row gap-10">
+      <div className="flex flex-col lg:flex-row gap-10 mb-10">
         <div className="w-full lg:w-[75%]">
           <Card className='bg-primary-light'>
             <RevenueChart />
@@ -56,18 +56,18 @@ const Dashboard = () => {
       </div>
 
       {/* Third Row */}
-      <div className="flex flex-col lg:flex-row gap-6">
-        <div className="w-full lg:w-[70%]">
-          <Card>
+      <div className="flex flex-col lg:flex-row gap-10">
+        <div className="w-full lg:w-[75%]">
+          <Card className='bg-primary-light'>
             <DataTable 
               columns={columns}
-              data={topSellingProducts.splice(0, 5)}
+              data={topSellingProducts.splice(0, 6)}
               title="Top Selling Products"
             />
           </Card>
         </div>
-        <div className="w-full lg:w-[30%]">
-          <Card>
+        <div className="w-full lg:w-[25%] flex">
+          <Card className='bg-primary-light flex-grow'>
             <SalesDonutChart />
           </Card>
         </div>
