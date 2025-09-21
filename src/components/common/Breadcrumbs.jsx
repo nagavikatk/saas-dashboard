@@ -12,8 +12,12 @@ const Breadcrumbs = () => {
           <Link to="/" className="text-light-text-primary dark:text-dark-text-primary">Dashboard</Link>
         </li>
         {pathnames.map((value, index) => {
-          const to = `/${pathnames.slice(0, index + 1).join('/')}`;
           const isLast = index === pathnames.length - 1;
+          let to = `/${pathnames.slice(0, index + 1).join('/')}`;
+
+          if (!isLast && (value.toLowerCase() === 'dashboards' || value.toLowerCase() === 'ecommerce' || value.toLowerCase() === 'pages')) {
+            to = '/';
+          }
 
           return (
             <li key={to} className="flex items-center space-x-2">
