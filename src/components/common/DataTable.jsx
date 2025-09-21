@@ -9,27 +9,26 @@ const DataTable = ({ columns, data, title }) => {
         </div>
       )}
       <div className="overflow-x-auto">
-        <table className="w-full min-w-full divide-y divide-light-border dark:divide-dark-border">
-          <thead className="bg-gray-50 dark:bg-gray-700">
-            <tr>
+        <table className="w-full">
+          <thead>
+            <tr className="text-left text-sm text-gray">
               {columns.map((column) => (
                 <th
                   key={column.key}
-                  scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-light-text-secondary dark:text-dark-text-secondary uppercase tracking-wider"
+                  className="font-medium py-3 px-4"
                 >
                   {column.label}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="bg-light-surface dark:bg-dark-surface divide-y divide-light-border dark:divide-dark-border">
+          <tbody className="divide-y divide-border">
             {data.map((row, index) => (
               <tr key={index}>
                 {columns.map((column) => (
                   <td
                     key={column.key}
-                    className="px-6 py-4 whitespace-nowrap text-sm text-light-text-primary dark:text-dark-text-primary"
+                    className={`py-3 px-4 ${column.key === 'name' ? 'text-dark font-semibold' : 'text-gray'}`}
                   >
                     {row[column.key]}
                   </td>

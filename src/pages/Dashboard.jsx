@@ -23,7 +23,8 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-6">
+    <main className="flex-1 p-6 bg-light-bg">
+      {/* The 3x2 grid of dashboard components will go here */}
       {/* First Row */}
       <div className="flex flex-col lg:flex-row gap-6">
         <div className="w-full lg:w-1/2">
@@ -71,7 +72,7 @@ const Dashboard = () => {
           </Card>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

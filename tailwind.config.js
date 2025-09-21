@@ -5,6 +5,7 @@ export default {
   theme: {
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
+      inter: ['Inter', 'sans-serif'], // Added 'inter' font family
     },
     extend: {
       boxShadow: {
@@ -29,6 +30,16 @@ export default {
         'status-red': '#EF4444', 'status-red-bg': '#FEF2F2',
         'status-blue': '#3B82F6', 'status-blue-bg': '#EFF6FF',
         'status-gray': '#64748B', 'status-gray-bg': '#F8FAFC',
+        // New colors from the user's request
+        'light-bg': '#F8F9FA',
+        'dark': '#212529',
+        'gray': '#6C757D',
+        'border': '#DEE2E6',
+        'primary': '#3B82F6',
+        'light': '#E5E7EB',
+        'success': '#10B981',
+        'purple': '#8B5CF6',
+        'cyan': '#06B6D4',
       },
       fontSize: {
         'xxs': '0.6875rem',

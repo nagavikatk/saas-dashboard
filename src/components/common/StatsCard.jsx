@@ -1,18 +1,19 @@
 import Card from './Card';
-import { FiArrowUp, FiArrowDown } from 'react-icons/fi';
+import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
-const StatsCard = ({ title, value, prefix = '', suffix = '', change }) => {
-  const isPositive = change.startsWith('+');
-
+const StatsCard = ({ title, value, prefix = '', suffix = '', change, isPositive }) => {
   return (
-    <Card className="p-6">
-      <h3 className="text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary">{title}</h3>
-      <p className="mt-2 text-2xl font-semibold text-light-text-primary dark:text-dark-text-primary">
-        {prefix}{value}{suffix}
-      </p>
-      <p className={`mt-2 text-sm ${isPositive ? 'text-status-green' : 'text-status-red'}`}>
-        {isPositive ? <FiArrowUp className="inline-block" /> : <FiArrowDown className="inline-block" />} {change.substring(1)}
-      </p>
+    <Card> {/* Card component already has the consistent styling */}
+      <p className="text-sm text-gray">{title}</p>
+      <div className="flex items-end justify-between mt-2">
+        <p className="text-3xl font-bold text-dark">
+          {prefix}{value}{suffix}
+        </p>
+        <div className={`flex items-center gap-1 text-sm font-semibold ${isPositive ? 'text-success' : 'text-gray'}`}>
+          {isPositive ? <ArrowUpRight size={16} /> : <ArrowDownRight size={16} />}
+          <span>{change}</span>
+        </div>
+      </div>
     </Card>
   );
 };

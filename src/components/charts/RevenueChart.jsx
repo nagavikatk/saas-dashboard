@@ -1,38 +1,42 @@
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import React from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 
 const data = [
-  { day: 'Mon', revenue: 4000 },
-  { day: 'Tue', revenue: 4500 },
-  { day: 'Wed', revenue: 5000 },
-  { day: 'Thu', revenue: 4800 },
-  { day: 'Fri', revenue: 5200 },
-  { day: 'Sat', revenue: 5500 },
-  { day: 'Sun', revenue: 5700 }
+    // Your chart data...
+    { name: 'Jan', 'Current Week': 4000, 'Previous Week': 2400 },
+    { name: 'Feb', 'Current Week': 3000, 'Previous Week': 1398 },
+    // ... more data
 ];
 
 const RevenueChart = () => {
-  return (
-    <div className="p-6 h-[400px]">
-      <h3 className="text-lg font-semibold mb-4 text-light-text-primary dark:text-dark-text-primary">
-        Weekly Revenue
-      </h3>
-      <ResponsiveContainer width="100%" height="85%">
-        <AreaChart data={data}>
-          <defs>
-            <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.3}/>
-              <stop offset="95%" stopColor="#3B82F6" stopOpacity={0}/>
-            </linearGradient>
-          </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="#E2E8F0" />
-          <XAxis dataKey="day" axisLine={false} tickLine={false} />
-          <YAxis axisLine={false} tickLine={false} />
-          <Tooltip />
-          <Area type="monotone" dataKey="revenue" stroke="#3B82F6" strokeWidth={2} fill="url(#colorRevenue)" />
-        </AreaChart>
-      </ResponsiveContainer>
-    </div>
-  );
+    return (
+        <div className="bg-white p-6 rounded-xl border border-border shadow-sm">
+            <div className="flex justify-between items-center mb-4">
+                <h3 className="text-lg font-semibold text-dark">Revenue</h3>
+                {/* Custom Legend because recharts legend is hard to style perfectly */}
+                <div className="flex items-center gap-4 text-sm">
+                    <div className="flex items-center gap-2">
+                        <span className="w-3 h-3 rounded-full bg-dark"></span>
+                        <span className="text-gray">Current Week: $56,211</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <span className="w-3 h-0.5 bg-gray border-dashed border-2 border-gray"></span>
+                         <span className="text-gray">Previous Week: $68,768</span>
+                    </div>
+                </div>
+            </div>
+            <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={data} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
+                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#6C757D' }} />
+                    <YAxis axisLine={false} tickLine={false} tick={{ fill: '#6C757D' }} />
+                    <Tooltip contentStyle={{ backgroundColor: '#212529', border: 'none', borderRadius: '0.5rem' }} labelStyle={{ color: '#FFFFFF' }} />
+                    <Line type="monotone" dataKey="Current Week" stroke="#212529" strokeWidth={2} dot={{ r: 4, fill: '#212529' }} activeDot={{ r: 6 }} />
+                    <Line type="monotone" dataKey="Previous Week" stroke="#6C757D" strokeWidth={2} strokeDasharray="5 5" dot={{ r: 4, fill: '#6C757D' }} activeDot={{ r: 6 }} />
+                </LineChart>
+            </ResponsiveContainer>
+        </div>
+    );
 };
 
 export default RevenueChart;
