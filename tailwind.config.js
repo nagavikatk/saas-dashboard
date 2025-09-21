@@ -46,6 +46,8 @@ export default {
         'primary-blue':'#E3F5FF',
         'primary-light':'#F7F9FB',
         'primary-purple':'#E5ECF6',
+        'secondary-cyan':'#A8C5DA',
+        'secondary-cyan-light':'#e6f5ffff',
       },
       fontSize: {
         'xxs': '0.6875rem',

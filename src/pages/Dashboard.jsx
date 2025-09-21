@@ -48,8 +48,8 @@ const Dashboard = () => {
             <RevenueChart />
           </Card>
         </div>
-        <div className="w-full lg:w-[30%]">
-          <Card className='bg-primary-light'>
+        <div className="w-full lg:w-[30%] flex">
+          <Card className='bg-primary-light fle-grow'>
             <WorldMapChart />
           </Card>
         </div>
