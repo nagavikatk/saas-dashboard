@@ -318,7 +318,7 @@ const OrderList = () => {
       </div>
 
       <div className="overflow-x-auto">
-        <table className="divide-y divide-light-border dark:divide-dark-border">
+        <table className="w-full divide-y divide-light-border dark:divide-dark-border">
           <thead>
             <tr className="text-left text-xs font-semibold uppercase text-light-text-secondary dark:text-dark-text-secondary tracking-wider">
               <th scope="col" className="w-16 px-6 py-3">
