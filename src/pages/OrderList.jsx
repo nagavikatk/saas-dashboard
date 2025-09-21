@@ -318,7 +318,7 @@ const OrderList = () => {
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-light-border dark:divide-dark-border">
+        <table className="divide-y divide-light-border dark:divide-dark-border">
           <thead>
             <tr className="text-left text-xs font-semibold uppercase text-light-text-secondary dark:text-dark-text-secondary tracking-wider">
               <th scope="col" className="w-16 px-6 py-3">
@@ -344,41 +344,41 @@ const OrderList = () => {
             {orders.length > 0 ? (
               orders.map((order) => (
                 <tr key={order.id} className="hover:bg-light-border/50 dark:hover:bg-dark-border/50">
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-6 py-4">
                     <input
                       type="checkbox"
                       onChange={() => { }}
                       className="h-4 w-4 rounded border-light-border dark:border-dark-border text-accent-blue focus:ring-accent-blue"
                     />
                   </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm font-semibold text-light-text-primary dark:text-dark-text-primary">
+                  <td className="px-4 py-4 text-sm font-semibold text-light-text-primary dark:text-dark-text-primary">
                     {order.id}
                   </td>
-                  <td className="px-4 py-4 whitespace-nowrap">
+                  <td className="px-4 py-4">
                     <div className="flex items-center">
                       <img className="h-8 w-8 rounded-full mr-3" src="https://i.pravatar.cc/40" alt={order.user} />
                       <span className="text-sm font-medium text-light-text-primary dark:text-dark-text-primary">{order.user}</span>
                     </div>
                   </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm text-light-text-secondary dark:text-dark-text-secondary">
+                  <td className="px-4 py-4 text-sm text-light-text-secondary dark:text-dark-text-secondary">
                     {order.project}
                   </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm text-light-text-secondary dark:text-dark-text-secondary">
+                  <td className="px-4 py-4 text-sm text-light-text-secondary dark:text-dark-text-secondary">
                     {order.address}
                   </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm text-light-text-secondary dark:text-dark-text-secondary">
+                  <td className="px-4 py-4 text-sm text-light-text-secondary dark:text-dark-text-secondary">
                     <div className="flex items-center gap-2">
                       <Calendar className="h-4 w-4" />
                       {order.date}
                     </div>
                   </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-sm font-medium">
+                  <td className="px-4 py-4 text-sm font-medium">
                     <div className="flex items-center gap-2">
                       <span className={`h-2.5 w-2.5 rounded-full ${getStatusDotColor(order.status)}`}></span>
                       <span className={getStatusClasses(order.status)}>{order.status}</span>
                     </div>
                   </td>
-                  <td className="px-4 py-4 whitespace-nowrap text-right">
+                  <td className="px-4 py-4 text-right">
                     <button className="text-light-text-secondary dark:text-dark-text-secondary hover:text-light-text-primary dark:hover:text-dark-text-primary">
                       <MoreHorizontal className="h-5 w-5" />
                     </button>
