@@ -45,23 +45,17 @@ const OrderList = () => {
   }, [sortPopoverRef]);
 
   const filteredAndSortedOrders = useMemo(() => {
-    console.log('searchTerm:', searchTerm);
-    console.log('selectedStatusFilters:', selectedStatusFilters);
-
     let filteredData = orderListData.filter(order =>
       Object.values(order).some(val =>
         String(val).toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
-    console.log('filteredData after search:', filteredData);
-
 
     if (selectedStatusFilters.length > 0) {
       filteredData = filteredData.filter(order =>
         selectedStatusFilters.includes(order.status)
       );
     }
-    console.log('filteredData after status filter:', filteredData);
 
     const sortedData = [...filteredData].sort((a, b) => {
       const aValue = a[sortConfig.key];
@@ -75,7 +69,6 @@ const OrderList = () => {
       }
       return 0;
     });
-    console.log('sortedData (final output of useMemo):', sortedData);
 
     return sortedData;
   }, [searchTerm, sortConfig, selectedStatusFilters]);
@@ -216,21 +209,19 @@ const OrderList = () => {
   return (
     <Card className="overflow-hidden p-0">
       <div className="pb-4 font-inter">
-        {/* Row 1: Title */}
         <div className="mb-4">
           <h2 className="text-xl font-semibold text-light-text-primary dark:text-dark-text-primary">Order List</h2>
         </div>
 
         <div className="flex items-center justify-between bg-primary-light dark:bg-dark-border rounded-lg px-3 py-1">
-          {/* Left side: Icons */}
           <div className="flex items-center space-x-2 text-sm text-light-text-secondary dark:text-dark-text-secondary">
-            <button className="p-2 rounded-lg hover:bg-light-border hover:dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+            <button className="p-2 rounded-lg hover:bg-light-border hover:dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary transition-colors">
               <Plus className="h-4 w-4" />
             </button>
             <div className="relative">
               <button
                 onClick={() => setIsFilterPopoverOpen(!isFilterPopoverOpen)}
-                className="p-2 rounded-lg hover:bg-light-border hover:dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                className="p-2 rounded-lg hover:bg-light-border hover:dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary transition-colors"
               >
                 <Filter className="h-4 w-4" />
               </button>
@@ -254,58 +245,58 @@ const OrderList = () => {
                 </div>
               )}
             </div>
-            <div className="relative" ref={sortPopoverRef}>
-              <button
-                onClick={() => setIsSortPopoverOpen(!isSortPopoverOpen)}
-                className="p-2 rounded-lg hover:bg-light-border hover:dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary transition-colors"
-              >
-                <BiSort className="h-4 w-4" />
-              </button>
-              {isSortPopoverOpen && (
-                <div className="absolute top-12 left-0 w-54 bg-light-surface dark:bg-dark-surface rounded-lg shadow-xl z-10 p-4 border border-light-border dark:border-dark-border">
-                  <h4 className="font-semibold mb-2 text-light-text-primary dark:text-dark-text-primary">Sort by</h4>
-                  <div className="mb-4">
-                    <label htmlFor="sort-column" className="block text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary mb-1">Column</label>
-                    <select
-                      id="sort-column"
-                      className="w-full p-2 border border-light-border dark:border-dark-border rounded-lg bg-light-background dark:bg-dark-background text-light-text-primary dark:text-dark-text-primary"
-                      value={sortConfig.key}
-                      onChange={(e) => setSortConfig(prev => ({ ...prev, key: e.target.value }))}
-                    >
-                      <option value="id">Order ID</option>
-                      <option value="user">User</option>
-                      <option value="project">Project</option>
-                      <option value="address">Address</option>
-                      <option value="date">Date</option>
-                      <option value="status">Status</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary mb-1">Order</label>
-                    <div className="flex space-x-2">
-                      <button
-                        onClick={() => setSortConfig(prev => ({ ...prev, direction: 'ascending' }))}
-                        className={`flex-1 p-2 rounded-lg text-sm font-medium ${sortConfig.direction === 'ascending'
-                            ? 'bg-accent-blue text-white'
-                            : 'bg-light-background dark:bg-dark-background text-light-text-primary dark:text-dark-text-primary hover:bg-light-border dark:hover:bg-dark-border'
-                          }`}
-                      >
-                        Ascending
-                      </button>
-                      <button
-                        onClick={() => setSortConfig(prev => ({ ...prev, direction: 'descending' }))}
-                        className={`flex-1 p-2 rounded-lg text-sm font-medium ${sortConfig.direction === 'descending'
-                            ? 'bg-accent-blue text-white'
-                            : 'bg-light-background dark:bg-dark-background text-light-text-primary dark:text-dark-text-primary hover:bg-light-border dark:hover:bg-dark-border'
-                          }`}
-                      >
-                        Descending
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
+<div className="relative" ref={sortPopoverRef}>
+  <button
+    onClick={() => setIsSortPopoverOpen(!isSortPopoverOpen)}
+    className="p-2 rounded-lg hover:bg-light-border hover:dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary transition-colors"
+  >
+    <BiSort className="h-4 w-4" />
+  </button>
+  {isSortPopoverOpen && (
+    <div className="absolute top-12 left-0 w-54 bg-light-surface dark:bg-dark-surface rounded-lg shadow-xl z-10 p-4 border border-light-border dark:border-dark-border">
+      <h4 className="font-semibold mb-2 text-light-text-primary dark:text-dark-text-primary">Sort by</h4>
+      <div className="mb-4">
+        <label htmlFor="sort-column" className="block text-sm font-medium text-light-text-primary dark:text-dark-text-primary mb-1">Column</label>
+        <select
+          id="sort-column"
+          className="w-full p-2 border border-light-border dark:border-dark-border rounded-lg bg-light-surface dark:bg-dark-surface text-light-text-primary dark:text-dark-text-primary appearance-none focus:outline-none focus:ring-1 focus:ring-accent-blue"
+          value={sortConfig.key}
+          onChange={(e) => setSortConfig(prev => ({ ...prev, key: e.target.value }))}
+        >
+          <option value="id">Order ID</option>
+          <option value="user">User</option>
+          <option value="project">Project</option>
+          <option value="address">Address</option>
+          <option value="date">Date</option>
+          <option value="status">Status</option>
+        </select>
+      </div>
+      <div>
+        <label className="block text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary mb-1">Order</label>
+        <div className="flex space-x-2">
+          <button
+            onClick={() => setSortConfig(prev => ({ ...prev, direction: 'ascending' }))}
+            className={`flex-1 p-2 rounded-lg text-sm font-medium ${sortConfig.direction === 'ascending'
+                ? 'bg-accent-blue text-white'
+                : 'bg-light-border dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary hover:bg-light-border dark:hover:bg-dark-border'
+              }`}
+          >
+            Ascending
+          </button>
+          <button
+            onClick={() => setSortConfig(prev => ({ ...prev, direction: 'descending' }))}
+            className={`flex-1 p-2 rounded-lg text-sm font-medium ${sortConfig.direction === 'descending'
+                ? 'bg-accent-blue text-white'
+                : 'bg-light-border dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary hover:bg-light-border dark:hover:bg-dark-border'
+              }`}
+          >
+            Descending
+          </button>
+        </div>
+      </div>
+    </div>
+  )}
+</div>
           </div>
 
           <div className="relative w-full sm:w-48">
@@ -356,7 +347,7 @@ const OrderList = () => {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <input
                       type="checkbox"
-                      onChange={() => {}}
+                      onChange={() => { }}
                       className="h-4 w-4 rounded border-light-border dark:border-dark-border text-accent-blue focus:ring-accent-blue"
                     />
                   </td>
