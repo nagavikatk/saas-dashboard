@@ -13,6 +13,9 @@ const OrderList = () => {
   const [selectedStatusFilters, setSelectedStatusFilters] = useState([]);
   const filterPopoverRef = useRef(null);
 
+  const [isSortPopoverOpen, setIsSortPopoverOpen] = useState(false);
+  const sortPopoverRef = useRef(null);
+
   const itemsPerPage = 8; // Based on the design
 
   useEffect(() => {
@@ -27,6 +30,19 @@ const OrderList = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [filterPopoverRef]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (sortPopoverRef.current && !sortPopoverRef.current.contains(event.target)) {
+        setIsSortPopoverOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [sortPopoverRef]);
 
   const filteredAndSortedOrders = useMemo(() => {
     console.log('searchTerm:', searchTerm);
@@ -239,20 +255,70 @@ const OrderList = () => {
                 </div>
               )}
             </div>
-            <button className="p-2 rounded-lg hover:bg-light-border hover:dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary transition-colors">
-              <BiSort className="h-4 w-4" />
-            </button>
+            <div className="relative" ref={sortPopoverRef}>
+              <button
+                onClick={() => setIsSortPopoverOpen(!isSortPopoverOpen)}
+                className="p-2 rounded-lg hover:bg-light-border hover:dark:bg-dark-border text-light-text-primary dark:text-dark-text-primary transition-colors"
+              >
+                <BiSort className="h-4 w-4" />
+              </button>
+              {isSortPopoverOpen && (
+                <div className="absolute top-12 left-0 w-54 bg-light-surface dark:bg-dark-surface rounded-lg shadow-xl z-10 p-4 border border-light-border dark:border-dark-border">
+                  <h4 className="font-semibold mb-2 text-light-text-primary dark:text-dark-text-primary">Sort by</h4>
+                  <div className="mb-4">
+                    <label htmlFor="sort-column" className="block text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary mb-1">Column</label>
+                    <select
+                      id="sort-column"
+                      className="w-full p-2 border border-light-border dark:border-dark-border rounded-lg bg-light-background dark:bg-dark-background text-light-text-primary dark:text-dark-text-primary"
+                      value={sortConfig.key}
+                      onChange={(e) => setSortConfig(prev => ({ ...prev, key: e.target.value }))}
+                    >
+                      <option value="id">Order ID</option>
+                      <option value="user">User</option>
+                      <option value="project">Project</option>
+                      <option value="address">Address</option>
+                      <option value="date">Date</option>
+                      <option value="status">Status</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-light-text-secondary dark:text-dark-text-secondary mb-1">Order</label>
+                    <div className="flex space-x-2">
+                      <button
+                        onClick={() => setSortConfig(prev => ({ ...prev, direction: 'ascending' }))}
+                        className={`flex-1 p-2 rounded-lg text-sm font-medium ${sortConfig.direction === 'ascending'
+                            ? 'bg-accent-blue text-white'
+                            : 'bg-light-background dark:bg-dark-background text-light-text-primary dark:text-dark-text-primary hover:bg-light-border dark:hover:bg-dark-border'
+                          }`}
+                      >
+                        Ascending
+                      </button>
+                      <button
+                        onClick={() => setSortConfig(prev => ({ ...prev, direction: 'descending' }))}
+                        className={`flex-1 p-2 rounded-lg text-sm font-medium ${sortConfig.direction === 'descending'
+                            ? 'bg-accent-blue text-white'
+                            : 'bg-light-background dark:bg-dark-background text-light-text-primary dark:text-dark-text-primary hover:bg-light-border dark:hover:bg-dark-border'
+                          }`}
+                      >
+                        Descending
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Right side: Search */}
-          <div className="relative w-full sm:w-auto flex-grow flex justify-end">
-            {/* <div className="inset-y-0 left-2 flex items-center pl-8 pointer-events-none">
+          {/* Right side: Search */}
+          <div className="relative w-full sm:w-48">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <Search className="h-4 w-4 text-light-text-secondary dark:text-dark-text-secondary" />
-            </div> */}
+            </div>
             <input
               type="text"
               placeholder="Search"
-              className="w-full sm:w-48 pl-10 pr-4 py-2 border border-light-border dark:border-dark-border rounded-lg bg-light-surface dark:bg-dark-surface text-light-text-primary dark:text-dark-text-primary placeholder:text-light-text-secondary focus:outline-none focus:ring-1 focus:ring-accent-blue"
+              className="w-full pl-10 pr-4 py-2 border border-light-border dark:border-dark-border rounded-lg bg-light-surface dark:bg-dark-surface text-light-text-primary dark:text-dark-text-primary placeholder:text-light-text-secondary focus:outline-none focus:ring-1 focus:ring-accent-blue"
               value={searchTerm}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
