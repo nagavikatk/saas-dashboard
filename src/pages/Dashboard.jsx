@@ -9,10 +9,10 @@ import { topSellingProducts } from '../data/mockData';
 
 const Dashboard = () => {
   const statsData = [
-    { title: 'Customers', value: '3,781', change: '+11.01%', isPositive: true },
-    { title: 'Orders', value: '1,219', change: '-0.03%', isPositive: false },
-    { title: 'Revenue', value: '$695', change: '+15.03%', isPositive: true },
-    { title: 'Growth', value: '30.1%', change: '+14.98%', isPositive: true }
+    { title: 'Customers', value: '3,781', change: '+11.01%', isPositive: true, bgClass:"bg-primary-blue" },
+    { title: 'Orders', value: '1,219', change: '-0.03%', isPositive: false, bgClass:"bg-primary-light" },
+    { title: 'Revenue', value: '$695', change: '+15.03%', isPositive: true, bgClass:"bg-primary-light" },
+    { title: 'Growth', value: '30.1%', change: '+14.98%', isPositive: true, bgClass:"bg-primary-purple" }
   ];
 
   const columns = [
@@ -23,7 +23,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <main className="flex-1 p-6 bg-light-bg">
+    <main className="flex-1 p-6 bg-light-surface dark:bg-dark-surface">
       {/* The 3x2 grid of dashboard components will go here */}
       {/* First Row */}
       <div className="flex flex-col lg:flex-row gap-6">

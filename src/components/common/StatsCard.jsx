@@ -1,9 +1,9 @@
 import Card from './Card';
 import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
 
-const StatsCard = ({ title, value, prefix = '', suffix = '', change, isPositive }) => {
+const StatsCard = ({ title, value, prefix = '', suffix = '', change, isPositive, bgClass }) => {
   return (
-    <Card> {/* Card component already has the consistent styling */}
+    <Card className={`${bgClass}`}>
       <p className="text-sm text-gray">{title}</p>
       <div className="flex items-end justify-between mt-2">
         <p className="text-3xl font-bold text-dark">

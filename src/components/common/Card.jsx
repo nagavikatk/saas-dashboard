@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const Card = ({ children, className = '' }) => {
   return (
     <motion.div
-      className={`bg-white p-4 rounded-lg border border-border shadow-sm ${className}`}
+      className={`p-4 rounded-lg shadow-sm ${className}`}
       whileHover={{ y: -5, transition: { duration: 0.2 } }}
     >
       {children}

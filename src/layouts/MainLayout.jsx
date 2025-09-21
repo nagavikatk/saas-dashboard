@@ -13,7 +13,7 @@ const MainLayout = () => {
 
   return (
     <>
-      <div className="flex h-screen bg-light-gray dark:bg-page-dark">
+      <div className="flex h-screen bg-light-surface dark:bg-page-dark">
         <Sidebar isCollapsed={isSidebarCollapsed} />
         <div 
           className="flex-1 flex flex-col transition-all duration-300"
