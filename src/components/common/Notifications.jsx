@@ -1,35 +1,28 @@
-const Notifications = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
+import React from 'react';
+import { Bell, Search, Wifi } from 'lucide-react';
 
+const notificationsData = [
+  { icon: Bell, text: "You have a bug that needs...", time: "Just now", iconColor: "text-blue-500" },
+  { icon: Search, text: "New user registered", time: "59 minutes ago", iconColor: "text-gray-500" },
+  { icon: Bell, text: "You have a bug that needs...", time: "12 hours ago", iconColor: "text-blue-500" },
+  { icon: Wifi, text: "Andi Lane subscribed to you", time: "Today, 11:59 AM", iconColor: "text-gray-500" },
+];
+
+const Notifications = ({ className = '' }) => {
   return (
-    <div className="h-full w-96 bg-white shadow-lg">
-        <div className="p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-semibold">Notifications</h2>
-            <button 
-              onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-full"
-            >
-              ✕
-            </button>
+    <div className={`space-y-4 ${className}`}>
+      {notificationsData.map((item, index) => (
+        <div key={index} className="flex items-center space-x-3">
+          <div className="flex-shrink-0">
+            <item.icon size={20} className={item.iconColor} />
           </div>
-          
-          <div className="space-y-4">
-            <div className="border-b pb-4">
-              <p className="font-medium">New message received</p>
-              <p className="text-sm text-gray-500">5 minutes ago</p>
-            </div>
-            <div className="border-b pb-4">
-              <p className="font-medium">System update completed</p>
-              <p className="text-sm text-gray-500">1 hour ago</p>
-            </div>
-            <div className="border-b pb-4">
-              <p className="font-medium">New user registration</p>
-              <p className="text-sm text-gray-500">2 hours ago</p>
-            </div>
+          <div className="flex-1">
+            <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{item.text}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">{item.time}</p>
           </div>
         </div>
-      </div>
+      ))}
+    </div>
   );
 };
 
