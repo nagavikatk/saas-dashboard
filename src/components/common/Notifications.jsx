@@ -17,8 +17,8 @@ const Notifications = ({ className = '' }) => {
             <item.icon size={20} className={item.iconColor} />
           </div>
           <div className="flex-1">
-            <p className="text-sm font-medium text-gray-800 dark:text-gray-200">{item.text}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">{item.time}</p>
+            <p className="text-sm font-medium text-light-text-primary dark:text-dark-text-primary">{item.text}</p>
+            <p className="text-xs text-light-text-primary dark:text-dark-text-primary">{item.time}</p>
           </div>
         </div>
       ))}
